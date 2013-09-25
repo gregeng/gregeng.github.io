@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-09-24T22:27:47-04:00</updated>
+  <updated>2013-09-24T22:41:31-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -20,7 +20,7 @@
     <id>http://gregeng.github.io/blog/2013/09/24/hello-world</id>
     <content type="html"><![CDATA[<p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time its different. It certainly feels good to finally say that to something other than the terminal or console.</p>
 
-<p>Over the course of this semester, I&rsquo;ll be blogging about my learning experience at the Flatiron School. I&rsquo;ll do my best to explain some of the topics we cover in hopes of helping and inspiring other hopeful developers. Thank you in advance for reading!</p>
+<p>Over the course of this semester, I&rsquo;ll be blogging about my learning experience at the Flatiron School. I&rsquo;ll do my best to explain some of the topics we cover in order to help and inspire other hopeful developers. Thank you in advance for reading!</p>
 
 <p>And just so we&rsquo;re acquainted, you should know I&rsquo;ve decided to become a web developer because &hellip;</p>
 
