@@ -7,7 +7,7 @@ categories:
 published: true
 ---
 
-*Hello World* - I've written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time its different. It certainly feels good to finally say that to something other than the terminal or console. 
+*Hello World* - I've written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time it's different. It certainly feels good to finally say that to something other than the terminal or console. 
 
 Over the course of this semester, I'll be blogging about my learning experience at the Flatiron School. I'll do my best to explain some of the topics we cover in order to help and inspire other hopeful developers. Thank you in advance for reading!
 
