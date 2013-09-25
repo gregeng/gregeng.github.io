@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-09-24T22:23:30-04:00</updated>
+  <updated>2013-09-24T22:27:47-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,5 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://gregeng.github.io/blog/2013/09/24/hello-world/"/>
+    <updated>2013-09-24T21:40:00-04:00</updated>
+    <id>http://gregeng.github.io/blog/2013/09/24/hello-world</id>
+    <content type="html"><![CDATA[<p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time its different. It certainly feels good to finally say that to something other than the terminal or console.</p>
+
+<p>Over the course of this semester, I&rsquo;ll be blogging about my learning experience at the Flatiron School. I&rsquo;ll do my best to explain some of the topics we cover in hopes of helping and inspiring other hopeful developers. Thank you in advance for reading!</p>
+
+<p>And just so we&rsquo;re acquainted, you should know I&rsquo;ve decided to become a web developer because &hellip;</p>
+
+<p>I&rsquo;ve been an Internet consumer since before AOL <a href="https://dl.dropboxusercontent.com/u/15030603/aol-cd.jpeg" target="_blank">discs</a> ever came in metallic cases. The dial-up connection crescendo still echoes in my mind. Throughout my life web technology has always made things better and easier. Dropbox helped me collaborate on group projects in school. YouTube taught me how to use Excel for my career in finance. I worked for an online dating startup that simply could not exist without it. Now I&rsquo;m motivated to do more than consume by learning how to code. I hope to pay my love for the web forward with the things that I make in the future.</p>
+
+<p>So again, hello world and hello readers!</p>
+]]></content>
+  </entry>
   
 </feed>
