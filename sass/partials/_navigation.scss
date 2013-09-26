@@ -21,7 +21,7 @@ body > nav {
       @include box-shadow(lighten($nav-bg, 2) 0 1px);
       background-color: lighten($nav-bg, 15);
       border: 1px solid $nav-border;
-      color: #888;
+      color: #FFF;
       &:focus {
         color: #444;
         border-color: #80b1df;
