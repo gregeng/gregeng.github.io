@@ -60,6 +60,14 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # page_asides:
 
 # ----------------------- #
+#        Navigation       #
+# ----------------------- #
+
+navigation:
+- text: Home
+  url: /index.html
+
+# ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
 
