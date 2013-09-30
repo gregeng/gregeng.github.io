@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-09-29T18:46:08-04:00</updated>
+  <updated>2013-09-29T20:57:12-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Just Keep Climbing...]]></title>
+    <link href="http://gregeng.github.io/blog/2013/09/29/just-keep-climbing/"/>
+    <updated>2013-09-29T20:40:00-04:00</updated>
+    <id>http://gregeng.github.io/blog/2013/09/29/just-keep-climbing</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been one week since the semester began. In that short time span there have been highs, lows, and countless lines of code mistakes in between. Each night I leave feeling drained. At times, I have been concerned that I might not be keeping pace with my classmates. Still, each morning I wake up energized looking forward to get to school.</p>
+
+<p>In a class-wide retrospective dubbed &ldquo;Feeling Friday&rdquo;, I learned that my peers have the same worries. Avi wisely mitigated our concerns by offering some perspective. He assured us that as long as we are constantly exploring, practicing and trying&hellip; we would be just fine. He went on to explain that the high and lows are just factors of learning in general. Each peak represents the gratification that comes directly after learning something new. Each low is just a representation <em>trying</em> to learn something new.</p>
+
+<p>Suddenly, pace is irrelevant. We&rsquo;re all on this journey <em>with</em> and not <em>against</em> each other. The peaks and valleys may come at different points for different people but they <strong>will</strong> come. The ascent can sometimes be arduous but it is often mostly just fun. The view from the top is extremely enticing.</p>
+
+<p>That elusive feeling of elation is what keeps me coming back. I can&rsquo;t wait to hit that next peak.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello World]]></title>
