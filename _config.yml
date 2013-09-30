@@ -66,6 +66,9 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 navigation:
 - text: Home
   url: /index.html
+- text: Archives
+  url: /blog/archives/index.html
+
 
 # ----------------------- #
 #   3rd Party Settings    #
