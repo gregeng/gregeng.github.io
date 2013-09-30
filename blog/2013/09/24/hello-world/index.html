@@ -8,9 +8,10 @@
   <title>Hello World - Greg Eng</title>
   <meta name="author" content="Greg Eng">
 
+   
+  <meta name="description" content="">
   
-  <meta name="description" content="Hello World &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School prework. However, this time &hellip;">
-  
+  <meta name="keywords" content="">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -20,12 +21,16 @@
   
   <link rel="canonical" href="http://gregeng.github.io/blog/2013/09/24/hello-world">
   <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Greg Eng" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,44 +40,55 @@
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Greg Eng</a></h1>
-  
-    <h2>Ruby 003 Student @ The Flatiron School</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:gregeng.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/index.html">Home</a></li>
+    
 </ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/gregeng" title="Github Profile" target="0"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/gregeng" title="Linkedin Profile" target="0"><i class="icon-linkedin-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://twitter.com/gregeng" title="Twitter Profile" target="0"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+    <li><a href="http://instagram.com/gregeng" title="Instagram Profile" target="0"><i class="icon-camera-retro social-navbar"></i></a></li>
+    
+    
+    <li><a href="mailto:greg.eng@gmail.com" title="Email" target="0"><i class="icon-envelope-alt social-navbar"></i></a></li>
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
 <article class="hentry" role="article">
   
+
   <header>
-    
-      <h1 class="entry-title">Hello World</h1>
-    
-    
-      <p class="meta">
-        
+  <div class="jumbotron">
+    Hello World
+	<h5>
 
 
 
@@ -84,14 +100,12 @@
   
 
 
-<time datetime="2013-09-24T21:40:00-04:00" pubdate data-updated="true">Sep 24<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time it&rsquo;s different. It certainly feels good to finally say that to something other than the terminal or console.</p>
+<i class="icon-calendar-empty"></i> <time datetime="2013-09-24T21:40:00-04:00" pubdate data-updated="true">Sep 24<span>th</span>, 2013</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time it&rsquo;s different. It certainly feels good to finally say that to something other than the terminal or console.</p>
 
 <p>Over the course of this semester, I&rsquo;ll be blogging about my learning experience at the Flatiron School. I&rsquo;ll do my best to explain some of the topics we cover in order to help and inspire other hopeful developers. Thank you in advance for reading!</p>
 
@@ -100,82 +114,98 @@
 <p>I&rsquo;ve been an Internet consumer since before AOL <a href="https://dl.dropboxusercontent.com/u/15030603/aol-cd.jpeg" target="_blank">discs</a> ever came in metallic cases. The dial-up connection crescendo still echoes in my mind. Throughout my life web technology has always made things better and easier. Dropbox helped me collaborate on group projects in school. YouTube taught me how to use Excel for my career in finance. I worked for an online dating startup that simply could not exist without it. Now I&rsquo;m motivated to do more than consume by learning how to code. I hope to pay my love for the web forward with the things that I make in the future.</p>
 
 <p>So again, hello world and hello readers!</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">Greg Eng</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-24T21:40:00-04:00" pubdate data-updated="true">Sep 24<span>th</span>, 2013</time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://gregeng.github.io/blog/2013/09/24/hello-world/" data-via="" data-counturl="http://gregeng.github.io/blog/2013/09/24/hello-world/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-      
-    </p>
-  </footer>
-</article>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/09/24/hello-world/">Hello World</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
 
     </div>
   </div>
-  <footer role="contentinfo"><p>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+          
+            <a class="basic-alignment right" href="/blog/2013/09/29/just-keep-climbing/" title="Next Post: Just Keep Climbing...">Just Keep Climbing... &raquo;</a>
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
   Copyright &copy; 2013 - Greg Eng -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
 </p>
 
-</footer>
+
+        </footer>
+      </div>
+    </div>
+  </div>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregeng';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gregeng.github.io/blog/2013/09/24/hello-world/';
+        var disqus_url = 'http://gregeng.github.io/blog/2013/09/24/hello-world/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
@@ -188,7 +218,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
