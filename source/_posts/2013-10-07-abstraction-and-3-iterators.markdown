@@ -12,7 +12,7 @@ I've never been a big fan of modern art. Some pieces are so abstract that I don'
 But in programming abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let's see abstraction occur by stepping through 3 related methods: 
 `each`,  `collect`  &  `select`.
 
-The `each` method returns the original array.
+The `each` method uses the elements in the array but returns the original array untouched.
 
 When I first learned the `each` method, I used it to almost exclusively to iterate over arrays. According to Abraham Maslow this is a consequence because "if all you have is a hammer, everything looks like a nail."
 
