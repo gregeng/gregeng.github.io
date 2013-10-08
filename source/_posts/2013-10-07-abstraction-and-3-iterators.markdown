@@ -12,25 +12,6 @@ I've never been a big fan of modern art. Some pieces are so abstract that I don'
 But in programming abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let's see abstraction occur by stepping through 3 related methods: 
 `each`,  `collect`  &  `select`.
 
-<!-- To understand the abstract though, we first need to understand the details. So lets take a look: -->
-
-When you break it down, the ruby `each` method is just an abstraction of the following:
-
-```ruby
-def my_each(array)
-  i = 0
-  while i < array.length
-    yield(array[i])
-    i += 1
-  end 
-  array
-end
-
-my_each([1,2,3,4,5]) { |x| puts x * x } 
-
-=> [1, 2, 3, 4, 5]
-```
-
 The `each` method returns the original array.
 
 When I first learned the `each` method, I used it to almost exclusively to iterate over arrays. According to Abraham Maslow this is a consequence because "if all you have is a hammer, everything looks like a nail."
@@ -61,23 +42,6 @@ If this feels bulky to you, that's because it is! Programmers might say this pat
 
 The ruby `collect` method is a better tool for the job, and it is just a further abstraction of the `each` method.
 
-Here it is dissected:
-```ruby
-def my_collect(array)
-  i = 0
-  collect = []
-  while i < array.length
-    collect << (yield(array[i]))
-    i += 1
-  end 
-  collect
-end
-
-collect_results = my_collect([1,2,3,4,5]) { |x| x * x } 
-
-=> [1, 4, 9, 16, 25]
-```
-
 Here it is using the example from above:
 
 ```ruby
@@ -97,25 +61,6 @@ But what if we only wanted to return values matching certain criteria? Then `col
 
 As you might have guessed, the ruby `select` method is an abstraction of the `collect` method.
 
-The dissection:
-
-```ruby
-def my_select(array)
-  i = 0
-  select = []
-  while i < array.length
-    if (yield(array[i]))
-      select << array[i]
-    end
-    i+=1
-  end 
-  select
-end
-
-select_results = my_select([1,2,3,4,5]) { |x| x == 3 } 
-
-=> [3]
-```
 
 Continuing with our example...
 
