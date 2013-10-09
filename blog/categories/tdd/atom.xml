@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: TDD | Greg Eng]]></title>
+  <link href="http://gregeng.github.io/blog/categories/tdd/atom.xml" rel="self"/>
+  <link href="http://gregeng.github.io/"/>
+  <updated>2013-10-09T18:29:35-04:00</updated>
+  <id>http://gregeng.github.io/</id>
+  <author>
+    <name><![CDATA[Greg Eng]]></name>
+    <email><![CDATA[greg.eng@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Test-Driven Development: More Than A Buzzword]]></title>
+    <link href="http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword/"/>
+    <updated>2013-10-07T21:44:00-04:00</updated>
+    <id>http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword</id>
+    <content type="html"><![CDATA[<p>Before starting programming classes, I had heard of test-driven development (TDD). I was told it was a good practice, similar to the way I was told to eat my green vegetables when I was younger. That&rsquo;s why up until today, I thought it was just another business <a href="http://unsuck-it.com/high-level-overview/" target="_blank">buzzword</a>.</p>
+
+<p>Today we began to cover the basic principles of object-oriented programming (OOP). Even in a simple app with 3 related classes, you can begin to see the complexity unfold. With complexity comes fragility &hellip; and that’s where TDD comes into play.</p>
+
+<p>Jason Arhart does a good job explaining TDD in his <a href="https://speakerdeck.com/lvrug/introduction-to-tdd-jason-arhart" target="_blank">speakerdeck</a>. Essentially, the process entails writing a simple test, letting it fail, and then writing the minimum amount of code to make the spec pass. He deftly sum&rsquo;s it up in a cyclical diagram describing the &ldquo;Red&rdquo;, &ldquo;Green&rdquo;, &ldquo;Refactor&rdquo; pattern. By following this method, you get a solid baseline of tests coupled with functioning code.</p>
+
+<p>It&rsquo;s this constant cycle that allows programs and their programmers to evolve. To this end, I think its better to think of it as an upward spiral. With this approach, the process may be a bit slower, but ultimately the sky is the limit.</p>
+
+<p>Jason describes TDD as a process that, &ldquo;turns the &lsquo;traditional&rsquo; on its head.&rdquo; I consider myself lucky to start learning in an environment where TDD is the convention. It feels great to pass each spec in a test suite and incrementally move from red to green. I liken it to the feeling you get when gambling and winning, only here you get to bet <em>with</em> the house.</p>
+
+<p>If you want to learn more about TDD, Jason has another speakerdeck that describes the Ruby specific testing framework:<a href="https://speakerdeck.com/lvrug/rspec-for-beginners-jason-arhart" target="_blank"> RSpec</a>. We will be using more of RSpec as the semester continues at the Flatiron school.</p>
+]]></content>
+  </entry>
+  
+</feed>

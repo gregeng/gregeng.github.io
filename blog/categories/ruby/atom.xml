@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Greg Eng]]></title>
+  <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://gregeng.github.io/"/>
+  <updated>2013-10-09T18:29:35-04:00</updated>
+  <id>http://gregeng.github.io/</id>
+  <author>
+    <name><![CDATA[Greg Eng]]></name>
+    <email><![CDATA[greg.eng@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
+    <link href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/"/>
+    <updated>2013-10-09T18:30:00-04:00</updated>
+    <id>http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
+" target="_blank">one</a>.</p>
+
+<p>But in programming, abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let&rsquo;s witness abstraction by stepping through 3 related methods:
+<code>each</code>,  <code>collect</code>  &amp;  <code>select</code>.</p>
+
+<p>The <code>each</code> method:</p>
+
+<p>```ruby
+numbers_array = [1,2,3,4,5,6,7,8,9,10]</p>
+
+<pre><code>numbers_array.each do |x|
+  print "#{x * 2} "
+end
+</code></pre>
+
+<h1>output: 2 4 6 8 10 12 14 16 18 20</h1>
+
+<p>numbers_array = [1,2,3,4,5,6,7,8,9,10]</p>
+
+<p>```</p>
+
+<p>The <code>each</code> method iterates through individual elements in the array and returns the original array untouched.</p>
+
+<p>When I first learned the <code>each</code> method, I used it to almost exclusively when working with arrays to make the computer do alot of the leg work for me.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Abraham_Maslow" target="_blank">Abraham Maslow</a> explains this consequence:</p>
+
+<blockquote><p>&hellip;if all you have is a hammer, everything looks like a nail.</p></blockquote>
+
+<p>However, since the <code>each</code> method does not change the original array, I started writing alot of code that looks like this:</p>
+
+<p>```ruby
+numbers_array = [1,2,3,4,5,6,7,8,9,10]
+odds_and_ends = []</p>
+
+<pre><code>numbers_array.each do |x|
+
+  if x % 2 != 0 
+    odds_and_ends &lt;&lt; true
+  else x % 2 == 0 
+    odds_and_ends &lt;&lt; false
+  end
+
+end
+</code></pre>
+
+<p>odds_and_ends</p>
+
+<p>=> [true, false, true, false, true, false, true, false, true, false]
+<code>``
+Here, I am creating a new empty array, just so I can shovel items into it with the</code>each` method. If this feels bulky to you, that&rsquo;s because it is! Programmers might say this pattern reeks of <em>code smell</em>.</p>
+
+<p>The ruby <code>collect</code> method is a better tool for the job, and it is just an abstraction of the <code>each</code> method.</p>
+
+<p>Here is <code>collect</code> using the example from above:</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].collect do |x|
+  if x % 2 != 0</p>
+
+<pre><code>true
+</code></pre>
+
+<p>  else x % 2 == 0</p>
+
+<pre><code>false
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>=> [true, false, true, false, true, false, true, false, true, false]
+<code>``
+Note that the</code>collect` method returns a <strong>new</strong> array which I have set equal to &ldquo;odds_and_ends.&rdquo;</p>
+
+<p>But what if we only wanted to return a <em>part</em> of the array if it matches certain criteria? In that case, <code>collect</code> no longer the best option.</p>
+
+<p>As you might have guessed, the ruby <code>select</code> method is an abstraction of the <code>collect</code> method. It also returns a new array, with an implicit <em>if</em> clause built in.</p>
+
+<p>Continuing with our example&hellip;</p>
+
+<p>If we were to use <code>collect</code>, it would return a messy array including nil values&hellip;</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].collect do |x|
+  if x % 2 != 0</p>
+
+<pre><code>x
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>=> [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]</p>
+
+<p>```</p>
+
+<p>&hellip;while <code>select</code> gets the job done more cleanly. It uses the implicit if to return only values matching the specified logic:</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].select do |x|
+  x % 2 != 0
+end</p>
+
+<p>=> [1, 3, 5, 7, 9]
+```</p>
+
+<p>So remember, abstraction is your friend!</p>
+
+<p>To recap: <code>select</code> is an abstraction of <code>collect</code> which is just an abstraction of <code>each</code>. Use them to <a href="http://images.wikia.com/richmoreacademy/images/0/07/Pine-tree-car-air-freshener.gif" target="_blank">freshen</a> up any and all code smell. I&rsquo;m still working to make sure I choose the right methods.</p>
+
+<p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog post, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
+]]></content>
+  </entry>
+  
+</feed>

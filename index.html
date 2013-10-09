@@ -112,6 +112,201 @@
   
 
 
+<i class="icon-calendar-empty"></i> <time datetime="2013-10-09T18:30:00-04:00" pubdate data-updated="true">Oct 9<span>th</span>, 2013</time></h5>
+          <div class="row-fluid">
+          
+          <a href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/#disqus_thread">Comments </a> <span class="fui-bubble-16"></span>
+          
+          </div>
+          
+          <div class="row-fluid">
+          
+          <a href="/blog/categories/ruby/"><span class="badge">ruby</span></a>
+          
+          </div>
+          
+    </div>
+    <div class="span10">
+      <h1 class="link"><a href="/blog/2013/10/09/abstraction-and-3-iterators/">Abstraction and 3 Helpful Ruby Iterators</a></h1>
+      <p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
+" target="_blank">one</a>.</p>
+
+<p>But in programming, abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let&rsquo;s witness abstraction by stepping through 3 related methods:
+<code>each</code>,  <code>collect</code>  &amp;  <code>select</code>.</p>
+
+<p>The <code>each</code> method:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">numbers_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">numbers_array</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>      <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#output: 2 4 6 8 10 12 14 16 18 20</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">numbers_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>each</code> method iterates through individual elements in the array and returns the original array untouched.</p>
+
+<p>When I first learned the <code>each</code> method, I used it to almost exclusively when working with arrays to make the computer do alot of the leg work for me.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Abraham_Maslow" target="_blank">Abraham Maslow</a> explains this consequence:</p>
+
+<blockquote><p>&hellip;if all you have is a hammer, everything looks like a nail.</p></blockquote>
+
+<p>However, since the <code>each</code> method does not change the original array, I started writing alot of code that looks like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">numbers_array</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">]</span>
+</span><span class='line'><span class="n">odds_and_ends</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">numbers_array</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="n">odds_and_ends</span> <span class="o">&lt;&lt;</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="k">else</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="n">odds_and_ends</span> <span class="o">&lt;&lt;</span> <span class="kp">false</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">odds_and_ends</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, I am creating a new empty array, just so I can shovel items into it with the <code>each</code> method. If this feels bulky to you, that&rsquo;s because it is! Programmers might say this pattern reeks of <em>code smell</em>.</p>
+
+<p>The ruby <code>collect</code> method is a better tool for the job, and it is just an abstraction of the <code>each</code> method.</p>
+
+<p>Here is <code>collect</code> using the example from above:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">odds_and_ends</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">].</span><span class="n">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">else</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="p">,</span> <span class="kp">true</span><span class="p">,</span> <span class="kp">false</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note that the <code>collect</code> method returns a <strong>new</strong> array which I have set equal to &ldquo;odds_and_ends.&rdquo;</p>
+
+<p>But what if we only wanted to return a <em>part</em> of the array if it matches certain criteria? In that case, <code>collect</code> no longer the best option.</p>
+
+<p>As you might have guessed, the ruby <code>select</code> method is an abstraction of the <code>collect</code> method. It also returns a new array, with an implicit <em>if</em> clause built in.</p>
+
+<p>Continuing with our example&hellip;</p>
+
+<p>If we were to use <code>collect</code>, it would return a messy array including nil values&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">odds_and_ends</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">].</span><span class="n">collect</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">x</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="kp">nil</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>&hellip;while <code>select</code> gets the job done more cleanly. It uses the implicit if to return only values matching the specified logic:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">odds_and_ends</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="o">].</span><span class="n">select</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So remember, abstraction is your friend!</p>
+
+<p>To recap: <code>select</code> is an abstraction of <code>collect</code> which is just an abstraction of <code>each</code>. Use them to <a href="http://images.wikia.com/richmoreacademy/images/0/07/Pine-tree-car-air-freshener.gif" target="_blank">freshen</a> up any and all code smell. I&rsquo;m still working to make sure I choose the right methods.</p>
+
+<p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog post, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
+
+      
+      
+    </div>
+  </div>
+
+
+
+    </article>
+    
+    <hr>
+    
+  
+  
+    <article>
+      
+
+  <div class="row-fluid">
+    <div class="span2">
+		<h1 class="date-time">
+
+
+
+
+
+
+
+
+  
+
+
 <i class="icon-calendar-empty"></i> <time datetime="2013-10-07T21:44:00-04:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time></h5>
           <div class="row-fluid">
           
@@ -120,6 +315,8 @@
           </div>
           
           <div class="row-fluid">
+          
+          <a href="/blog/categories/TDD/"><span class="badge">TDD</span></a>
           
           </div>
           
@@ -177,6 +374,10 @@
           
           <div class="row-fluid">
           
+          <a href="/blog/categories/learning/"><span class="badge">learning</span></a>
+          
+          <a href="/blog/categories/non-technical/"><span class="badge">non-technical</span></a>
+          
           </div>
           
     </div>
@@ -228,6 +429,8 @@
           </div>
           
           <div class="row-fluid">
+          
+          <a href="/blog/categories/non-technical/"><span class="badge">non-technical</span></a>
           
           </div>
           

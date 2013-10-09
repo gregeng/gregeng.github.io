@@ -1,24 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Greg Eng]]></title>
-  <link href="http://gregeng.github.io/atom.xml" rel="self"/>
-  <link href="http://gregeng.github.io/"/>
-  <updated>2013-10-09T18:29:35-04:00</updated>
-  <id>http://gregeng.github.io/</id>
-  <author>
-    <name><![CDATA[Greg Eng]]></name>
-    <email><![CDATA[greg.eng@gmail.com]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Abstraction and 3 Helpful Ruby Iterators - Greg Eng</title>
+  <meta name="author" content="Greg Eng">
+
+   
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <entry>
-    <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
-    <link href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/"/>
-    <updated>2013-10-09T18:30:00-04:00</updated>
-    <id>http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
+  <link rel="canonical" href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Greg Eng" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/index.html">Home</a></li>
+    
+        <li ><a href="/blog/archives/index.html">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/gregeng" title="Github Profile" target="0"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/gregeng" title="Linkedin Profile" target="0"><i class="icon-linkedin-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://twitter.com/gregeng" title="Twitter Profile" target="0"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+    <li><a href="http://instagram.com/gregeng" title="Instagram Profile" target="0"><i class="icon-camera-retro social-navbar"></i></a></li>
+    
+    
+    <li><a href="mailto:greg.eng@gmail.com" title="Email" target="0"><i class="icon-envelope-alt social-navbar"></i></a></li>
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Abstraction and 3 Helpful Ruby Iterators
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-10-09T18:30:00-04:00" pubdate data-updated="true">Oct 9<span>th</span>, 2013</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
 " target="_blank">one</a>.</p>
 
 <p>But in programming, abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let&rsquo;s witness abstraction by stepping through 3 related methods:
@@ -166,58 +255,124 @@
 <p>To recap: <code>select</code> is an abstraction of <code>collect</code> which is just an abstraction of <code>each</code>. Use them to <a href="http://images.wikia.com/richmoreacademy/images/0/07/Pine-tree-car-air-freshener.gif" target="_blank">freshen</a> up any and all code smell. I&rsquo;m still working to make sure I choose the right methods.</p>
 
 <p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog post, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
-]]></content>
-  </entry>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/blog/categories/ruby/"><span class="badge">ruby</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
   
-  <entry>
-    <title type="html"><![CDATA[Test-Driven Development: More Than A Buzzword]]></title>
-    <link href="http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword/"/>
-    <updated>2013-10-07T21:44:00-04:00</updated>
-    <id>http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword</id>
-    <content type="html"><![CDATA[<p>Before starting programming classes, I had heard of test-driven development (TDD). I was told it was a good practice, similar to the way I was told to eat my green vegetables when I was younger. That&rsquo;s why up until today, I thought it was just another business <a href="http://unsuck-it.com/high-level-overview/" target="_blank">buzzword</a>.</p>
-
-<p>Today we began to cover the basic principles of object-oriented programming (OOP). Even in a simple app with 3 related classes, you can begin to see the complexity unfold. With complexity comes fragility &hellip; and that’s where TDD comes into play.</p>
-
-<p>Jason Arhart does a good job explaining TDD in his <a href="https://speakerdeck.com/lvrug/introduction-to-tdd-jason-arhart" target="_blank">speakerdeck</a>. Essentially, the process entails writing a simple test, letting it fail, and then writing the minimum amount of code to make the spec pass. He deftly sum&rsquo;s it up in a cyclical diagram describing the &ldquo;Red&rdquo;, &ldquo;Green&rdquo;, &ldquo;Refactor&rdquo; pattern. By following this method, you get a solid baseline of tests coupled with functioning code.</p>
-
-<p>It&rsquo;s this constant cycle that allows programs and their programmers to evolve. To this end, I think its better to think of it as an upward spiral. With this approach, the process may be a bit slower, but ultimately the sky is the limit.</p>
-
-<p>Jason describes TDD as a process that, &ldquo;turns the &lsquo;traditional&rsquo; on its head.&rdquo; I consider myself lucky to start learning in an environment where TDD is the convention. It feels great to pass each spec in a test suite and incrementally move from red to green. I liken it to the feeling you get when gambling and winning, only here you get to bet <em>with</em> the house.</p>
-
-<p>If you want to learn more about TDD, Jason has another speakerdeck that describes the Ruby specific testing framework:<a href="https://speakerdeck.com/lvrug/rspec-for-beginners-jason-arhart" target="_blank"> RSpec</a>. We will be using more of RSpec as the semester continues at the Flatiron school.</p>
-]]></content>
-  </entry>
   
-  <entry>
-    <title type="html"><![CDATA[Just Keep Climbing...]]></title>
-    <link href="http://gregeng.github.io/blog/2013/09/29/just-keep-climbing/"/>
-    <updated>2013-09-29T20:40:00-04:00</updated>
-    <id>http://gregeng.github.io/blog/2013/09/29/just-keep-climbing</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s been one week since the semester began. In that short time span there have been highs, lows, and countless lines of code mistakes in between. Each night I leave feeling drained. At times, I have been concerned that I might not be keeping pace with my classmates. Still, each morning I wake up energized looking forward to get to school.</p>
-
-<p>In a class-wide retrospective dubbed &ldquo;Feeling Friday&rdquo;, I learned that my peers have the same worries. Avi wisely mitigated our concerns by offering some perspective. He assured us that as long as we are constantly exploring, practicing and trying&hellip; we would be just fine. He went on to explain that the high and lows are just factors of learning in general. Each peak represents the gratification that comes directly after learning something new. Each low is just a representation <em>trying</em> to learn something new.</p>
-
-<p>Suddenly, pace is irrelevant. We&rsquo;re all on this journey <em>with</em> and not <em>against</em> each other. The peaks and valleys may come at different points for different people but they <strong>will</strong> come. The ascent can sometimes be arduous but it is often mostly just fun. The view from the top is extremely enticing.</p>
-
-<p>That elusive feeling of elation is what keeps me coming back. I can&rsquo;t wait to hit that next peak.</p>
-]]></content>
-  </entry>
+  <a class="addthis_button_tweet"></a>
   
-  <entry>
-    <title type="html"><![CDATA[Hello World]]></title>
-    <link href="http://gregeng.github.io/blog/2013/09/24/hello-world/"/>
-    <updated>2013-09-24T21:40:00-04:00</updated>
-    <id>http://gregeng.github.io/blog/2013/09/24/hello-world</id>
-    <content type="html"><![CDATA[<p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time it&rsquo;s different. It certainly feels good to finally say that to something other than the terminal or console.</p>
-
-<p>Over the course of this semester, I&rsquo;ll be blogging about my learning experience at the Flatiron School. I&rsquo;ll do my best to explain some of the topics we cover in order to help and inspire other hopeful developers. Thank you in advance for reading!</p>
-
-<p>And just so we&rsquo;re acquainted, you should know I&rsquo;ve decided to become a web developer because &hellip;</p>
-
-<p>I&rsquo;ve been an Internet consumer since before AOL <a href="https://dl.dropboxusercontent.com/u/15030603/aol-cd.jpeg" target="_blank">discs</a> ever came in metallic cases. The dial-up connection crescendo still echoes in my mind. Throughout my life web technology has always made things better and easier. Dropbox helped me collaborate on group projects in school. YouTube taught me how to use Excel for my career in finance. I worked for an online dating startup that simply could not exist without it. Now I&rsquo;m motivated to do more than consume by learning how to code. I hope to pay my love for the web forward with the things that I make in the future.</p>
-
-<p>So again, hello world and hello readers!</p>
-]]></content>
-  </entry>
   
-</feed>
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/10/07/test-driven-development-more-than-a-buzzword/" title="Previous Post: Test-Driven Development: More Than A Buzzword">&laquo; Test-Driven Development: More Than A Buzzword</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2013 - Greg Eng -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregeng';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/';
+        var disqus_url = 'http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
