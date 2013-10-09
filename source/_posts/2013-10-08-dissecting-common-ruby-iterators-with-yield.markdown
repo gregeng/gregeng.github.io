@@ -3,7 +3,7 @@ layout: post
 title: "Dissecting Common Ruby Iterators With Yield"
 date: 2013-10-08 08:38
 comments: true
-categories: 
+categories: ruby
 published: false
 ---
 

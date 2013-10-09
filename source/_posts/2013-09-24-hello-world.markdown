@@ -3,7 +3,7 @@ layout: post
 title: "Hello World"
 date: 2013-09-24 21:40
 comments: true
-categories: 
+categories: non-technical
 published: true
 ---
 

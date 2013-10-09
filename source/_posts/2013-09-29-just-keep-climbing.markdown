@@ -3,7 +3,7 @@ layout: post
 title: "Just Keep Climbing..."
 date: 2013-09-29 20:40
 comments: true
-categories: 
+categories: non-technical learning
 published: true
 ---
 
