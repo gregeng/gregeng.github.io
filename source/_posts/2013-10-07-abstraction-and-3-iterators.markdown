@@ -29,7 +29,7 @@ numbers_array = [1,2,3,4,5,6,7,8,9,10]
 
 The `each` method iterates through individual elements in the array and returns the original array untouched.
 
-When I first learned the `each` method, I used it to almost exclusively when working with arrays to make the computer do alot of the leg work for me.
+When I first learned the `each` method, I used it almost exclusively when working with arrays to make the computer do alot of the leg work for me.
 
 <a href="http://en.wikipedia.org/wiki/Abraham_Maslow" target="_blank">Abraham Maslow</a> explains this consequence:
 >...if all you have is a hammer, everything looks like a nail.
