@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-10-09T18:29:35-04:00</updated>
+  <updated>2013-10-10T22:25:19-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -42,7 +42,7 @@ end
 
 <p>The <code>each</code> method iterates through individual elements in the array and returns the original array untouched.</p>
 
-<p>When I first learned the <code>each</code> method, I used it to almost exclusively when working with arrays to make the computer do alot of the leg work for me.</p>
+<p>When I first learned the <code>each</code> method, I used it almost exclusively when working with arrays to make the computer do alot of the leg work for me.</p>
 
 <p><a href="http://en.wikipedia.org/wiki/Abraham_Maslow" target="_blank">Abraham Maslow</a> explains this consequence:</p>
 
