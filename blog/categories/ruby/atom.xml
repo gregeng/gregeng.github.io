@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-10-23T22:37:11-04:00</updated>
+  <updated>2013-10-23T22:44:06-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,198 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Yield! In the Name of Blocks]]></title>
+    <link href="http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks/"/>
+    <updated>2013-10-23T08:38:00-04:00</updated>
+    <id>http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks</id>
+    <content type="html"><![CDATA[<p>Let&rsquo;s think it <a href="http://www.metrolyrics.com/stop-in-the-name-of-love-lyrics-the-supremes.html" target="_blank">over</a>&hellip;</p>
+
+<p>In an earlier <a href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/" target="_blank">post</a>, I talked about a few Ruby iterators and how they abstract to become useful tools. As promised, I&rsquo;m going to further break them down in order to describe the conept of <code>yield</code> in Ruby.</p>
+
+<p>In Ruby, methods are functions that allow code to interact with all different pieces of the program. Compared to spoken languages, you can think of methods as the verbs which connect to nouns and other words to form sentences. Methods are able to receive a code <code>block</code> which unlocks limitless potential.
+When defining our own methods, the magic of <code>yield</code> comes into play. If a method expects a block, it can invoke it by using <code>yield</code>.</p>
+
+<p>For example:</p>
+
+<p>```ruby</p>
+
+<p>class Weather</p>
+
+<pre><code>def initialize(type)
+     @type = type
+end
+
+def forecast
+    yield(@type)
+end
+</code></pre>
+
+<p>end</p>
+
+<p>today = Weather.new(&ldquo;hot&rdquo;)</p>
+
+<p><code>``
+Here I am defining a weather class that takes an argument at instantiation. I've also defined a method</code>forecast` that will take any block given and pass it the argument.</p>
+
+<p>```ruby</p>
+
+<p>today.forecast do |type|
+  puts &ldquo;It&rsquo;s going to be #{type}!&rdquo;
+end</p>
+
+<h1>=> It&rsquo;s going to be hot!</h1>
+
+<p>```
+As you can see, I&rsquo;ve interpolated the variable with a friendly little forecast sentence.</p>
+
+<p>But I could just as easily use a different block to perform a different function.</p>
+
+<p>```ruby</p>
+
+<p>today.forecast do |type|
+  puts &ldquo;It&rsquo;s going to be #{type.upcase}, #{type.upcase}, #{type.upcase}!&rdquo;
+end</p>
+
+<h1>=> It&rsquo;s going to be HOT, HOT, HOT!</h1>
+
+<p>```</p>
+
+<p>In this case&hellip; I am loudly saying its going to be <em>fairly</em> warm.</p>
+
+<p>Building on this idea, you can see that it essentially allows any method to easily become an iterator. Here is another look at the iterators described in my previous post: <code>each</code>, <code>collect</code>, <code>select</code>.</p>
+
+<p><code>each</code> dissected:</p>
+
+<p>```ruby
+def my_each(array)
+  i = 0
+  while i &lt; array.length</p>
+
+<pre><code>yield(array[i])
+i += 1
+</code></pre>
+
+<p>  end
+  array
+end</p>
+
+<p>my_each([1,2,3,4,5]) { |x| puts x * x }</p>
+
+<h1>OUTPUT:</h1>
+
+<h1>1</h1>
+
+<h1>4</h1>
+
+<h1>9</h1>
+
+<h1>16</h1>
+
+<h1>25</h1>
+
+<p>=> [1, 2, 3, 4, 5]
+```</p>
+
+<p><code>collect</code> dissected:</p>
+
+<p>```ruby
+def my_collect(array)
+  i = 0
+  collect = []
+  while i &lt; array.length</p>
+
+<pre><code>collect &lt;&lt; (yield(array[i]))
+i += 1
+</code></pre>
+
+<p>  end
+  collect
+end</p>
+
+<p>collect_results = my_collect([1,2,3,4,5]) { |x| x * x }</p>
+
+<p>=> [1, 4, 9, 16, 25]
+```</p>
+
+<p><code>select</code> dissected:</p>
+
+<p>```ruby
+def my_select(array)
+  i = 0
+  select = []
+  while i &lt; array.length</p>
+
+<pre><code>if (yield(array[i]))
+  select &lt;&lt; array[i]
+end
+i+=1
+</code></pre>
+
+<p>  end
+  select
+end</p>
+
+<p>select_results = my_select([1,2,3,4,5]) { |x| x == 3 }</p>
+
+<p>=> [3]
+```</p>
+
+<p>BONUS <code>none?</code> dissected:</p>
+
+<p>```ruby
+def my_none?(array)
+  i = 0
+  while i &lt; array.length</p>
+
+<pre><code>if (yield(array[i]))
+  return false
+end
+i += 1
+</code></pre>
+
+<p>  end
+  true
+end</p>
+
+<p>my_none?([1,2,3]) { |x| x == 3 }</p>
+
+<p>=> false</p>
+
+<p>my_none?([1,2,3]) { |x| x == 4 }</p>
+
+<p>=> true
+```</p>
+
+<p>BONUS <code>include?</code> dissected:</p>
+
+<p>```ruby
+def my_include?(array)
+  i = 0
+  while i &lt; array.length</p>
+
+<pre><code>if (yield(array[i]))
+  return true
+end
+i += 1
+</code></pre>
+
+<p>  end
+  false
+end</p>
+
+<p>my_include?([1,2,3]) { |x| x == 3 }
+=> true
+my_include?([1,2,3]) { |x| x == 4 }
+=> false
+```</p>
+
+<p>These examples are simple and isolated, but <code>yield</code> truly provides myriad possibilities when building sophisticated programs. To prove it, check out this <a href="http://rubylearning.com/blog/2010/11/30/how-do-i-build-dsls-with-yield-and-instance_eval/" target="_blank">blog post</a> by Michael Bleigh where he described constructing eloquent looking code to design a DSL (Domain Specific Language) with the help of <code>yield</code>.</p>
+
+<p>Have you ever used <code>yield</code> to do something clever or noteworthy? Sound off in the comments!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
