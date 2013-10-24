@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-10-23T22:44:53-04:00</updated>
+  <updated>2013-10-23T22:56:13-04:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -70,7 +70,7 @@ end</p>
 
 <p>```</p>
 
-<p>In this case&hellip; I am loudly saying its going to be <em>fairly</em> warm.</p>
+<p>In this case&hellip; I am loudly saying it&rsquo;s going to be <em>fairly</em> warm.</p>
 
 <p>Building on this idea, you can see that it essentially allows any method to easily become an iterator. Here is another look at the iterators described in my previous post: <code>each</code>, <code>collect</code>, <code>select</code>.</p>
 
@@ -322,7 +322,7 @@ end</p>
 
 <p>To recap: <code>select</code> is an abstraction of <code>collect</code> which is just an abstraction of <code>each</code>. Use them to <a href="http://images.wikia.com/richmoreacademy/images/0/07/Pine-tree-car-air-freshener.gif" target="_blank">freshen</a> up any and all code smell. I&rsquo;m still working to make sure I choose the right methods.</p>
 
-<p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog post, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
+<p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog <a href="http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks">post</a>, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
 ]]></content>
   </entry>
   
