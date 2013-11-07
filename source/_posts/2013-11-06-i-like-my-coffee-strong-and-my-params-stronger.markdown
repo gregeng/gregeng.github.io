@@ -36,7 +36,7 @@ And here is the markup used to create that form:
   <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"        >
 </form>
 ```
-Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs within the sub key `user` hash. Then, it would be appropriate to assume somewhere in the `UsersController` to find a method like this:
+Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs within the sub key `user` hash. Then, it would be appropriate to assume somewhere in the `UsersController`, there is a method like this:
 
 ```ruby
 UsersController
@@ -81,7 +81,7 @@ That might look something like this:
 </form>
 ```
 
-Now when I submit this form, the controller is going to create a record in the `users` table that is missing my email address. Instead, it will set the `admin` column to true and give me admin access rights to the application. Depending on the domain, I might be able to see and do a multitude of things I normally couldn't otherwise. This seems not preferable.
+Now when I submit this form, the controller is going to create a record in the `users` table that is missing my email address. Instead, it will set the `admin` column to true and give me admin access rights to the application. Depending on the domain, I might be able to see and do a multitude of things I normally couldn't otherwise. That seems not preferable.
 
 Luckily part of the Rails 4.0 core is a pattern that reinforces the idea of strong params. If we were to generate a scaffold using the `user` resource detailed above, it would produce 2 methods in the controller that look like this:
 
