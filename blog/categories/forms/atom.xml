@@ -4,7 +4,7 @@
   <title><![CDATA[Category: forms | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/forms/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-11-06T23:10:07-05:00</updated>
+  <updated>2013-11-06T23:23:40-05:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -22,9 +22,9 @@
 
 <p>Mass assignment is a convenient technique rubyists can use to easily assign multiple attributes to an object at instantiation. Yanik Jayaram provides an excellent description of it in his blog <a href="http://modernlegend.github.io/blog/2013/03/16/what-is-mass-assignment/" target="_blank">post</a>. It uses elements of metaprogramming and the idea of dynamic definition which is artfully described by Emily Xie <a href="http://emilyxxie.github.io/blog/2013/11/02/defining-the-undefined-dynamic-definition-for-ruby-newcomers/" target="_blank">here</a>.</p>
 
-<p>This pattern becomes extremely useful in Rails when dealing with user input in forms. A sign up form is a great place for this patten.</p>
+<p>This pattern becomes extremely useful in Rails when dealing with user input in forms. A sign up form is a great place for this pattern.</p>
 
-<p>Lets take a look at an example:</p>
+<p>Let&rsquo;s take a look at an example:</p>
 
 <div align="center">
   <h2>Sign Up</h2>
@@ -49,7 +49,7 @@
   &lt;input type="password" name="user[password_confirmation]" placeholder="Confirm Password"        &gt;
 &lt;/form&gt;
 </code>
-Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs in the within the sub key <code>user</code> hash. Then, it would be appropriate to assume somewhere in the <code>UsersController</code> to find a method like this:</p>
+Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs within the sub key <code>user</code> hash. Then, it would be appropriate to assume somewhere in the <code>UsersController</code> to find a method like this:</p>
 
 <p>```ruby
 UsersController</p>
@@ -68,9 +68,9 @@ UsersController</p>
 end</p>
 
 <p><code>``
-Instead of having to individually having to individually call the following methods,</code>first_name=<code>,</code>last_name=<code>,</code>email=<code>, and</code>password=` to set all of these input values &hellip; mass assignment lets us get it done at a higher level of abstraction.</p>
+Instead of having to individually call the following methods,</code>first_name=<code>,</code>last_name=<code>,</code>email=<code>, and</code>password=` to set all of these input values &hellip; mass assignment lets us get it done at a higher level of abstraction.</p>
 
-<p>But with this convenience lies a crucial vulnerability. In the form example above, we can assume that this web application is backed by a database with a <code>users</code> table that may have more columns than the form leads us to believe. Perhaps administrators also have users accounts within the application and certain permissions are allocated to them. This could be based on an <code>admin</code> column that takes a boolean value of 0 or 1.</p>
+<p>But with this convenience lies a crucial vulnerability. In the form example above, we can assume that this web application is backed by a database with a <code>users</code> table that may have more columns than the form leads us to believe. Perhaps administrators also have user accounts within the application and certain permissions are allocated to them. This could be based on an <code>admin</code> column that takes a boolean value of 0 or 1.</p>
 
 <p>Using this knowledge, we can maliciously change any one of the inputs to alter the <code>admin</code> column instead &hellip; even if this wasn&rsquo;t the original intent of the form. Using Google&rsquo;s Chrome browser, I can inspect the element of the form and change the email input field to reference <code>user[admin]</code> instead of <code>user[email]</code></p>
 
@@ -131,7 +131,7 @@ end
 end
 ```</p>
 
-<p>This pattern illustrates the idea of &ldquo;sanitizing&rdquo; the parameters before letting them get anywhere near to our domain model. Instead of directly taking in the params submitted through the internet form in the <code>create</code> method, we will first call the <code>private</code> method <code>user_params</code> (named after the resource).  This says it should require a sub key of <code>user</code> (resource name) and then only permit certain keys to make it through to the domain model. In effect, this creates a white list of acceptable inputs or <em>strong parameters</em>.</p>
+<p>This pattern illustrates the idea of sanitizing the parameters before letting them get anywhere near our domain model. Instead of directly taking in the params submitted through the internet form in the <code>create</code> method, we will first call the <code>private</code> method <code>user_params</code> (named after the resource).  This says it should require a sub key of <code>user</code> (resource name) and then only permit certain keys to make it through to the domain model. In effect, this creates a white list of acceptable inputs or <em>strong parameters</em>.</p>
 
 <p>Now, the worst thing that could happen is a form that is submitted with incomplete user data. I think most would agree that is better than the former scenario.</p>
 
