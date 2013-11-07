@@ -10,9 +10,9 @@ Before understanding the need for strong params in Rails, let's take a look at t
 
 Mass assignment is a convenient technique rubyists can use to easily assign multiple attributes to an object at instantiation. Yanik Jayaram provides an excellent description of it in his blog <a href="http://modernlegend.github.io/blog/2013/03/16/what-is-mass-assignment/" target="_blank">post</a>. It uses elements of metaprogramming and the idea of dynamic definition which is artfully described by Emily Xie <a href="http://emilyxxie.github.io/blog/2013/11/02/defining-the-undefined-dynamic-definition-for-ruby-newcomers/" target="_blank">here</a>.
 
-This pattern becomes extremely useful in Rails when dealing with user input in forms. A sign up form is a great place for this patten.
+This pattern becomes extremely useful in Rails when dealing with user input in forms. A sign up form is a great place for this pattern.
 
-Lets take a look at an example:
+Let's take a look at an example:
 
 <div align="center">
   <h2>Sign Up</h2>
@@ -36,7 +36,7 @@ And here is the markup used to create that form:
   <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"        >
 </form>
 ```
-Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs in the within the sub key `user` hash. Then, it would be appropriate to assume somewhere in the `UsersController` to find a method like this:
+Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs within the sub key `user` hash. Then, it would be appropriate to assume somewhere in the `UsersController` to find a method like this:
 
 ```ruby
 UsersController
@@ -52,9 +52,9 @@ UsersController
 end
 
 ```
-Instead of having to individually having to individually call the following methods, `first_name=`, `last_name=`, `email=`, and `password=` to set all of these input values ... mass assignment lets us get it done at a higher level of abstraction.
+Instead of having to individually call the following methods, `first_name=`, `last_name=`, `email=`, and `password=` to set all of these input values ... mass assignment lets us get it done at a higher level of abstraction.
 
-But with this convenience lies a crucial vulnerability. In the form example above, we can assume that this web application is backed by a database with a `users` table that may have more columns than the form leads us to believe. Perhaps administrators also have users accounts within the application and certain permissions are allocated to them. This could be based on an `admin` column that takes a boolean value of 0 or 1.
+But with this convenience lies a crucial vulnerability. In the form example above, we can assume that this web application is backed by a database with a `users` table that may have more columns than the form leads us to believe. Perhaps administrators also have user accounts within the application and certain permissions are allocated to them. This could be based on an `admin` column that takes a boolean value of 0 or 1.
 
 Using this knowledge, we can maliciously change any one of the inputs to alter the `admin` column instead ... even if this wasn't the original intent of the form. Using Google's Chrome browser, I can inspect the element of the form and change the email input field to reference `user[admin]` instead of `user[email]`
 
@@ -107,7 +107,7 @@ UsersController
 end
 ```
 
-This pattern illustrates the idea of "sanitizing" the parameters before letting them get anywhere near to our domain model. Instead of directly taking in the params submitted through the internet form in the `create` method, we will first call the `private` method `user_params` (named after the resource).  This says it should require a sub key of `user` (resource name) and then only permit certain keys to make it through to the domain model. In effect, this creates a white list of acceptable inputs or *strong parameters*.
+This pattern illustrates the idea of sanitizing the parameters before letting them get anywhere near our domain model. Instead of directly taking in the params submitted through the internet form in the `create` method, we will first call the `private` method `user_params` (named after the resource).  This says it should require a sub key of `user` (resource name) and then only permit certain keys to make it through to the domain model. In effect, this creates a white list of acceptable inputs or *strong parameters*.
 
 Now, the worst thing that could happen is a form that is submitted with incomplete user data. I think most would agree that is better than the former scenario.
 
