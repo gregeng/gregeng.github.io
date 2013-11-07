@@ -1,85 +1,18 @@
 ---
 layout: post
-title: "I Like My Coffee Strong and My Params Stronger"
+title: "I Like My Coffee Strong ... and My Params Stronger"
 date: 2013-11-06 21:16
 comments: true
-categories: rails, ruby
-published: false
+categories: ruby rails forms
+published: true
 ---
+Before understanding the need for strong params in Rails, let's take a look at the idea of mass assignment in Ruby.
 
-mass assignment in ruby and strong parameters
-why the strong parameters part exists in scaffolding
+Mass assignment is a convenient technique rubyists can use to easily assign multiple attributes to an object at instantiation. Yanik Jayaram provides an excellent description of it in his blog <a href="http://modernlegend.github.io/blog/2013/03/16/what-is-mass-assignment/" target="_blank">post</a>. It uses elements of metaprogramming and the idea of dynamic definition which is artfully described by Emily Xie <a href="http://emilyxxie.github.io/blog/2013/11/02/defining-the-undefined-dynamic-definition-for-ruby-newcomers/" target="_blank">here</a>.
 
-I like my coffee strong ... and my params stronger.
-I like my coffee the same way I like my params: strong.
-I like my coffee and params strong
-strong: coffee && params
+This pattern becomes extremely useful in Rails when dealing with user input in forms. A sign up form is a great place for this patten.
 
-mass assignment
-dynamic dispatch - link to emilys post here
-using the send method since it doesn't know which param it will get it ... and it ultimately uses the method_name= method
-creates a white list of acceptable params
-avi comes up with an interesting point about modified html headers ... if its modified then don't accept it
-
-django does this already can we just adopt it in rails.
-
-what are you thoughts? sound off in the comments
-
-https://github.com/rails/strong_parameters
-http://pivotallabs.com/rails-4-testing-strong-parameters/
-http://edgeapi.rubyonrails.org/classes/ActionController/StrongParameters.html
-http://weblog.rubyonrails.org/2012/3/21/strong-parameters/
-http://emilyxxie.github.io/blog/2013/11/02/defining-the-undefined-dynamic-definition-for-ruby-newcomers/
-http://emilyxxie.github.io/blog/2013/10/14/dynamc-dispatch-101/
-https://docs.djangoproject.com/en/dev/topics/signing/
-
-strong parameters
-duh had to fight a lot of people to force them to use this
-new in rails 4
-
-mass assignment vulnerability
-around a year and a had ago github got hacked
-lets pretend I'm on a registration form
-they are a rails app air bob
-
-lets try to imagine their users table
-it looks like it has a first name column, last name column, ... based on the form
-what if i guessed that it had a column named role ...
-what if i further guessed that 1 would mean admin role in the role colum
-the way they're probably processing this sign up form
-then i could just change the form in the nested key
-
-@user =  User.new(params[:user])
-then later on in the controller they're probably doing something like this:
-
-@user.save
-
-I know the reason that they are prefixing all the form fields with user ... is so that they can glob params and just say params[:user]
-here's the problem with html.
-the client has access to the form field .. he/she can change it ... i can make the email address column submit to user[role] instead of user[email.]
-
-Now when I submit a user, even though they didn't intend or present me with an ability to set my role ... when I submit this ... I will be an admin.  That's a big problem no?
-
-This is the vulnerability of mass assignment
-
-with great convenience comes great insecurity
-never trust parameters from the scary internet. only allow the whitelist
-
-we build a method called resource_params
-it becomes a private method
-w'ere gonna clean this hash of anything we might not want to pass along to the objects mass assignment
-
-params should require a sub key of resource ... that permits only the following keys to pass through ...
-
-so if i hack my form and use a different key .. it will sanitize the data ...
-
-if someone manipulated my form i want to reject the whole form. if someone changed the html i sent them ... i sent your client html .. you manipulated it... i want to reject it
-
-when we gen a form for rails we should be keeping on the server a SHA of the form. take html and encrypt it into a long string ... when you send me back the form i recncypt and make sure i mass the string i sent to begin with. its a signed form.  if you have signed forms you never have to worry about mass assignment vulnerableilities
-
-django supports signed forms or gems for it
-
-Let's take a look at a sign up form example:
+Lets take a look at an example:
 
 <div align="center">
   <h2>Sign Up</h2>
@@ -87,19 +20,108 @@ Let's take a look at a sign up form example:
     <input type="text" name="user[first_name]" placeholder="First name" value=""><br>
     <input type="text" name="user[last_name]" placeholder="Last name" value=""><br>
     <input type="email" name="user[email]" placeholder="Email Address" value=""><br>
-    <input type="password" id="user_password" name="user[password]" placeholder="Password"><br>
+    <input type="password" name="user[password]" placeholder="Password"><br>
     <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"><br>
   </form>
 </div>
 
-Here is the markup used to create that form:
+And here is the markup used to create that form:
 
 ```html
-<form action="/create" class="signup-form" id="user_new" method="post">
-  <input type="text" name="user[first_name]" placeholder="First name" value="">
-  <input type="text" name="user[last_name]" placeholder="Last name" value="">
-  <input type="email" name="user[email]" placeholder="Email Address" value="">
-  <input type="password" id="user_password" name="user[password]" placeholder="Password">
-  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password">
+<form action="/create"   method="post">
+  <input type="text"     name="user[first_name]"            placeholder="First name"      value="">
+  <input type="text"     name="user[last_name]"             placeholder="Last name"       value="">
+  <input type="email"    name="user[email]"                 placeholder="Email Address"   value="">
+  <input type="password" name="user[password]"              placeholder="Password"                >
+  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"        >
 </form>
 ```
+Once the user submits this form, the params hash will inlude all the input values neatly nested as key value pairs in the within the sub key `user` hash. Then, it would be appropriate to assume somewhere in the `UsersController` to find a method like this:
+
+```ruby
+UsersController
+
+  def create
+    @user = User.new(params[:user])
+      if @user.save
+        redirect_to @user
+      else
+        "Error!"
+      end
+  end
+end
+
+```
+Instead of having to individually having to individually call the following methods, `first_name=`, `last_name=`, `email=`, and `password=` to set all of these input values ... mass assignment lets us get it done at a higher level of abstraction.
+
+But with this convenience lies a crucial vulnerability. In the form example above, we can assume that this web application is backed by a database with a `users` table that may have more columns than the form leads us to believe. Perhaps administrators also have users accounts within the application and certain permissions are allocated to them. This could be based on an `admin` column that takes a boolean value of 0 or 1.
+
+Using this knowledge, we can maliciously change any one of the inputs to alter the `admin` column instead ... even if this wasn't the original intent of the form. Using Google's Chrome browser, I can inspect the element of the form and change the email input field to reference `user[admin]` instead of `user[email]`
+
+That might look something like this:
+
+<div align="center">
+  <h2>Sign Up</h2>
+  <form accept-charset="UTF-8" action="/create" class="signup-form" id="user_new" method="post">
+    <input type="text" name="user[first_name]" placeholder="First name" value="Greg"><br>
+    <input type="text" name="user[last_name]" placeholder="Last name" value="Eng"><br>
+    <input type="email" name="user[admin]" placeholder="Email Address" value="1"><br>
+    <input type="password" name="user[password]" placeholder="Password" value="password"><br>
+    <input type="password" name="user[password_confirmation]" placeholder="Confirm Password" value="password"><br>
+  </form>
+</div>
+
+```html
+<form action="/create"   method="post">
+  <input type="text"     name="user[first_name]"            placeholder="First name"      value="">
+  <input type="text"     name="user[last_name]"             placeholder="Last name"       value="">
+  <input type="email"    name="user[admin]"                 placeholder="Email Address"   value="">
+  <input type="password" name="user[password]"              placeholder="Password"                >
+  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"        >
+</form>
+```
+
+Now when I submit this form, the controller is going to create a record in the `users` table that is missing my email address. Instead, it will set the `admin` column to true and give me admin access rights to the application. Depending on the domain, I might be able to see and do a multitude of things I normally couldn't otherwise. This seems not preferable.
+
+Luckily part of the Rails 4.0 core is a pattern that reinforces the idea of strong params. If we were to generate a scaffold using the `user` resource detailed above, it would produce 2 methods in the controller that look like this:
+
+```ruby
+# Rails 4.0
+
+UsersController
+
+  def create
+    @user = User.new(user_params)
+      if @user.save
+        redirect_to @user
+      else
+        "Error!"
+      end
+  end
+
+  private
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
+  end
+end
+```
+
+This pattern illustrates the idea of "sanitizing" the parameters before letting them get anywhere near to our domain model. Instead of directly taking in the params submitted through the internet form in the `create` method, we will first call the `private` method `user_params` (named after the resource).  This says it should require a sub key of `user` (resource name) and then only permit certain keys to make it through to the domain model. In effect, this creates a white list of acceptable inputs or *strong parameters*.
+
+Now, the worst thing that could happen is a form that is submitted with incomplete user data. I think most would agree that is better than the former scenario.
+
+The Rails scaffold comments on this pattern directly in the controller file:
+>Never trust parameters from the scary internet, only allow the white list through.
+
+I like to imagine <a href="https://twitter.com/dhh/status/182591044108562433" target="_blank">DHH</a> himself saying this to really drive this point home.
+
+So you too should enjoy your parameters and coffee the same way: **strong**.
+Your code will be more defensive and the data will be cleaner in the long run.
+
+<br>
+<h3>Additional Resources:</h3>
+<a href = "http://edgeapi.rubyonrails.org/classes/ActionController/StrongParameters.html" target="_blank">Documentation</a><br>
+<a href = "http://weblog.rubyonrails.org/2012/3/21/strong-parameters/" target="_blank"> DHH's Blog Post</a><br>
+<a href ="http://pivotallabs.com/rails-4-testing-strong-parameters/" target="_blank">Pivotal Labs on Testing Strong Params</a><br>
+<a href= "https://github.com/rails/strong_parameters" target="_blank"> Strong Params Gem for Earlier Ruby Versions</a><br>
