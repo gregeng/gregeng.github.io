@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku - Greg Eng</title>
+  <meta name="author" content="Greg Eng">
+
+   
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://gregeng.github.io/blog/2013/11/21/hide-your-keys">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Greg Eng" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/index.html">Home</a></li>
+    
+        <li ><a href="/blog/archives/index.html">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/gregeng" title="Github Profile" target="0"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/gregeng" title="Linkedin Profile" target="0"><i class="icon-linkedin-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://twitter.com/gregeng" title="Twitter Profile" target="0"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+    <li><a href="http://instagram.com/gregeng" title="Instagram Profile" target="0"><i class="icon-camera-retro social-navbar"></i></a></li>
+    
+    
+    <li><a href="mailto:greg.eng@gmail.com" title="Email" target="0"><i class="icon-envelope-alt social-navbar"></i></a></li>
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2013-11-21T09:33:00-05:00" pubdate data-updated="true">Nov 21<span>st</span>, 2013</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>In that case, you have to do a little more than just hide them.</p>
+
+<p>Typically, an API will require a key or authentication token before serving data downstream. It&rsquo;s logical to avoid committing any of these to a public repo on GitHub, so I often found myself falling into a pattern. I would make hidden files in the assets folder of my project, then <code>.gitignore</code> each one.</p>
+
+<p>It would result in a folder structure that might look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>/project
+</span><span class='line'>    /lib
+</span><span class='line'>      /assets
+</span><span class='line'>        .api_key
+</span><span class='line'>        .auth_token
+</span><span class='line'>        .password
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then in the class that controls all of the API calls, I would do something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Class</span> <span class="no">API</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.api_key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>  <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.auth_token&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</span><span class='line'>  <span class="no">PASSWORD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.password&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">some_method</span>
+</span><span class='line'>    <span class="ss">:user_key</span> <span class="o">=&gt;</span> <span class="no">API_KEY</span>
+</span><span class='line'>    <span class="ss">:user_token</span> <span class="o">=&gt;</span> <span class="no">AUTH_TOKEN</span>
+</span><span class='line'>    <span class="ss">:user_password</span> <span class="o">=&gt;</span> <span class="no">PASSWORD</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I set each relevant piece to a constant to be used in methods throughout the API interactions.</p>
+
+<p>This way feels a little clunky, but it works. As long as you remember to add each hidden file to the .gitignore, it keeps the credentials safe. But as a project grows and it accumulates more authorizations, it becomes a little difficult to manage.</p>
+
+<p>It wasn&rsquo;t until my group tried to deploy an app to Heroku that we discovered the better way. Heroku makes it simple to deploy a Rails app, but as a result it lacks a lot of the bells and whistles. As a result, it is impossible to log in to the server in a shell to upload each individual hidden file described above.</p>
+
+<p>In order to accomplish the same level of security and function, we can instead use Heroku config variables that will be read at runtime. Heroku has some great <a href="https://devcenter.heroku.com/articles/config-vars#local-setup" target="_blank">documentation</a> on this topic.</p>
+
+<p>It&rsquo;s very easy to set up from the local shell. Thanks to my teammate <a href="http://davidbella.github.io/" target="_blank">David Bella</a>, we were able to figure out what we needed to do immediately.</p>
+
+<p>Just navigate to the root of your project directory and run the <code>heroku config:set</code> command.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>heroku config:set <span class="nv">API_KEY</span><span class="o">=</span>abcefghijklmnopqrstuvwxyz
+</span><span class='line'>heroku config:set <span class="nv">AUTH_TOKEN</span><span class="o">=</span>abc123doremi
+</span><span class='line'>heroku config:set <span class="nv">PASSWORD</span><span class="o">=</span>p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s all there is to it! If you want to see your setup at any point, just type <code>heroku config</code> to see an output like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>API_KEY:                     abcefghijklmnopqrstuvwxyz
+</span><span class='line'>AUTH_TOKEN:                  abc123doremi
+</span><span class='line'>PASSWORD:                    p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is great for production, but how can we get the same level of organization and clarity for our development environment? My classmate <a href="http://scottluptowski.com/" target="_blank">Scott Luptowski</a> told us about the <a href="https://github.com/bkeepers/dotenv" target="_blank">dotenv</a> gem that assists with that exact problem.</p>
+
+<p>Start by including <code>gem 'dotenv-rails'</code> in your <code>Gemfile</code> in the appropriate groups. We only use it in <code>:test</code> and <code>:development</code>. Then, make a <code>.env</code> file at the root of your project directory. In it, include the assignments for each of the keys, tokens or passwords you want to call.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">API_KEY</span><span class="o">=</span>abcefghijklmnopqrstuvwxyz
+</span><span class='line'><span class="nv">AUTH_TOKEN</span><span class="o">=</span>abc123doremi
+</span><span class='line'><span class="nv">PASSWORD</span><span class="o">=</span>p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rails will be able to call these variables anywhere in the application by using this pattern: <code>ENV['API_KEY']</code>, <code>ENV['AUTH_TOKEN']</code>, <code>ENV['PASSWORD']</code>. The hard coded keys will stay out of your code and you will have one organized place to manage all the necessary information. Just remember to also add the .env file to your .gitignore. The app should now work seamlessly in both local development and production Heroku environments. A simple solution for an important problem!</p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/blog/categories/api/"><span class="badge">api</span></a>
+
+  <a href="/blog/categories/gems/"><span class="badge">gems</span></a>
+
+  <a href="/blog/categories/heroku/"><span class="badge">heroku</span></a>
+
+  <a href="/blog/categories/rails/"><span class="badge">rails</span></a>
+
+  <a href="/blog/categories/ruby/"><span class="badge">ruby</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2013/11/06/i-like-my-coffee-strong-and-my-params-stronger/" title="Previous Post: I Like My Coffee Strong ... and My Params Stronger">&laquo; I Like My Coffee Strong ... and My Params Stronger</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2013 - Greg Eng -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregeng';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gregeng.github.io/blog/2013/11/21/hide-your-keys/';
+        var disqus_url = 'http://gregeng.github.io/blog/2013/11/21/hide-your-keys/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-11-07T08:45:12-05:00</updated>
+  <updated>2013-11-21T08:53:03-05:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku]]></title>
+    <link href="http://gregeng.github.io/blog/2013/11/21/hide-your-keys/"/>
+    <updated>2013-11-21T09:33:00-05:00</updated>
+    <id>http://gregeng.github.io/blog/2013/11/21/hide-your-keys</id>
+    <content type="html"><![CDATA[<p>In that case, you have to do a little more than just hide them.</p>
+
+<p>Typically, an API will require a key or authentication token before serving data downstream. It&rsquo;s logical to avoid committing any of these to a public repo on GitHub, so I often found myself falling into a pattern. I would make hidden files in the assets folder of my project, then <code>.gitignore</code> each one.</p>
+
+<p>It would result in a folder structure that might look like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>/project
+</span><span class='line'>    /lib
+</span><span class='line'>      /assets
+</span><span class='line'>        .api_key
+</span><span class='line'>        .auth_token
+</span><span class='line'>        .password
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then in the class that controls all of the API calls, I would do something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Class</span> <span class="no">API</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="no">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.api_key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span class='line'>  <span class="no">AUTH_TOKEN</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.auth_token&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</span><span class='line'>  <span class="no">PASSWORD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;lib/assets/.password&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">some_method</span>
+</span><span class='line'>    <span class="ss">:user_key</span> <span class="o">=&gt;</span> <span class="no">API_KEY</span>
+</span><span class='line'>    <span class="ss">:user_token</span> <span class="o">=&gt;</span> <span class="no">AUTH_TOKEN</span>
+</span><span class='line'>    <span class="ss">:user_password</span> <span class="o">=&gt;</span> <span class="no">PASSWORD</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I set each relevant piece to a constant to be used in methods throughout the API interactions.</p>
+
+<p>This way feels a little clunky, but it works. As long as you remember to add each hidden file to the .gitignore, it keeps the credentials safe. But as a project grows and it accumulates more authorizations, it becomes a little difficult to manage.</p>
+
+<p>It wasn&rsquo;t until my group tried to deploy an app to Heroku that we discovered the better way. Heroku makes it simple to deploy a Rails app, but as a result it lacks a lot of the bells and whistles. As a result, it is impossible to log in to the server in a shell to upload each individual hidden file described above.</p>
+
+<p>In order to accomplish the same level of security and function, we can instead use Heroku config variables that will be read at runtime. Heroku has some great <a href="https://devcenter.heroku.com/articles/config-vars#local-setup" target="_blank">documentation</a> on this topic.</p>
+
+<p>It&rsquo;s very easy to set up from the local shell. Thanks to my teammate <a href="http://davidbella.github.io/" target="_blank">David Bella</a>, we were able to figure out what we needed to do immediately.</p>
+
+<p>Just navigate to the root of your project directory and run the <code>heroku config:set</code> command.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>heroku config:set <span class="nv">API_KEY</span><span class="o">=</span>abcefghijklmnopqrstuvwxyz
+</span><span class='line'>heroku config:set <span class="nv">AUTH_TOKEN</span><span class="o">=</span>abc123doremi
+</span><span class='line'>heroku config:set <span class="nv">PASSWORD</span><span class="o">=</span>p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s all there is to it! If you want to see your setup at any point, just type <code>heroku config</code> to see an output like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>API_KEY:                     abcefghijklmnopqrstuvwxyz
+</span><span class='line'>AUTH_TOKEN:                  abc123doremi
+</span><span class='line'>PASSWORD:                    p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This is great for production, but how can we get the same level of organization and clarity for our development environment? My classmate <a href="http://scottluptowski.com/" target="_blank">Scott Luptowski</a> told us about the <a href="https://github.com/bkeepers/dotenv" target="_blank">dotenv</a> gem that assists with that exact problem.</p>
+
+<p>Start by including <code>gem 'dotenv-rails'</code> in your <code>Gemfile</code> in the appropriate groups. We only use it in <code>:test</code> and <code>:development</code>. Then, make a <code>.env</code> file at the root of your project directory. In it, include the assignments for each of the keys, tokens or passwords you want to call.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">API_KEY</span><span class="o">=</span>abcefghijklmnopqrstuvwxyz
+</span><span class='line'><span class="nv">AUTH_TOKEN</span><span class="o">=</span>abc123doremi
+</span><span class='line'><span class="nv">PASSWORD</span><span class="o">=</span>p4ssw0rd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rails will be able to call these variables anywhere in the application by using this pattern: <code>ENV['API_KEY']</code>, <code>ENV['AUTH_TOKEN']</code>, <code>ENV['PASSWORD']</code>. The hard coded keys will stay out of your code and you will have one organized place to manage all the necessary information. Just remember to also add the .env file to your .gitignore. The app should now work seamlessly in both local development and production Heroku environments. A simple solution for an important problem!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[I Like My Coffee Strong ... and My Params Stronger]]></title>
