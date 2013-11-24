@@ -105,10 +105,10 @@ disqus_short_name: gregeng
 disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-45994045-1
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
 
 # Linkedin
 linkedin_user: gregeng
