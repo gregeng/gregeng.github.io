@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-11-24T16:35:04-05:00</updated>
+  <updated>2014-03-04T20:41:09-08:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku]]></title>
     <link href="http://gregeng.github.io/blog/2013/11/21/hide-your-keys/"/>
-    <updated>2013-11-21T09:33:00-05:00</updated>
+    <updated>2013-11-21T09:33:00-08:00</updated>
     <id>http://gregeng.github.io/blog/2013/11/21/hide-your-keys</id>
     <content type="html"><![CDATA[<p>In that case, you have to do a little more than just hide them.</p>
 
@@ -126,7 +126,7 @@
   <entry>
     <title type="html"><![CDATA[I Like My Coffee Strong ... and My Params Stronger]]></title>
     <link href="http://gregeng.github.io/blog/2013/11/06/i-like-my-coffee-strong-and-my-params-stronger/"/>
-    <updated>2013-11-06T21:16:00-05:00</updated>
+    <updated>2013-11-06T21:16:00-08:00</updated>
     <id>http://gregeng.github.io/blog/2013/11/06/i-like-my-coffee-strong-and-my-params-stronger</id>
     <content type="html"><![CDATA[<p>Before understanding the need for strong params in Rails, let&rsquo;s take a look at the idea of mass assignment in Ruby.</p>
 
@@ -307,7 +307,7 @@ Your code will be more defensive and the data will be cleaner in the long run.</
   <entry>
     <title type="html"><![CDATA[Yield! In the Name of Blocks]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks/"/>
-    <updated>2013-10-23T08:38:00-04:00</updated>
+    <updated>2013-10-23T08:38:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks</id>
     <content type="html"><![CDATA[<p>Let&rsquo;s think it <a href="http://www.metrolyrics.com/stop-in-the-name-of-love-lyrics-the-supremes.html" target="_blank">over</a>&hellip;</p>
 
@@ -573,7 +573,7 @@ When defining our own methods, the magic of <code>yield</code> comes into play. 
   <entry>
     <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/"/>
-    <updated>2013-10-09T18:30:00-04:00</updated>
+    <updated>2013-10-09T18:30:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
 " target="_blank">one</a>.</p>
@@ -729,7 +729,7 @@ When defining our own methods, the magic of <code>yield</code> comes into play. 
   <entry>
     <title type="html"><![CDATA[Test-Driven Development: More Than A Buzzword]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword/"/>
-    <updated>2013-10-07T21:44:00-04:00</updated>
+    <updated>2013-10-07T21:44:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword</id>
     <content type="html"><![CDATA[<p>Before starting programming classes, I had heard of test-driven development (TDD). I was told it was a good practice, similar to the way I was told to eat my green vegetables when I was younger. That&rsquo;s why up until today, I thought it was just another business <a href="http://unsuck-it.com/high-level-overview/" target="_blank">buzzword</a>.</p>
 
@@ -748,7 +748,7 @@ When defining our own methods, the magic of <code>yield</code> comes into play. 
   <entry>
     <title type="html"><![CDATA[Just Keep Climbing...]]></title>
     <link href="http://gregeng.github.io/blog/2013/09/29/just-keep-climbing/"/>
-    <updated>2013-09-29T20:40:00-04:00</updated>
+    <updated>2013-09-29T20:40:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/09/29/just-keep-climbing</id>
     <content type="html"><![CDATA[<p>It&rsquo;s been one week since the semester began. In that short time span there have been highs, lows, and countless lines of code mistakes in between. Each night I leave feeling drained. At times, I have been concerned that I might not be keeping pace with my classmates. Still, each morning I wake up energized looking forward to get to school.</p>
 
@@ -763,7 +763,7 @@ When defining our own methods, the magic of <code>yield</code> comes into play. 
   <entry>
     <title type="html"><![CDATA[Hello World]]></title>
     <link href="http://gregeng.github.io/blog/2013/09/24/hello-world/"/>
-    <updated>2013-09-24T21:40:00-04:00</updated>
+    <updated>2013-09-24T21:40:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/09/24/hello-world</id>
     <content type="html"><![CDATA[<p><em>Hello World</em> &ndash; I&rsquo;ve written that simple phrase out so many times during the exercises in the Flatiron School <a href="http://prework.flatironschool.com/" target="_blank">prework</a>.  However, this time it&rsquo;s different. It certainly feels good to finally say that to something other than the terminal or console.</p>
 

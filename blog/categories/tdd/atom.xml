@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TDD | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/tdd/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-11-24T16:35:04-05:00</updated>
+  <updated>2014-03-04T20:41:09-08:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Test-Driven Development: More Than A Buzzword]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword/"/>
-    <updated>2013-10-07T21:44:00-04:00</updated>
+    <updated>2013-10-07T21:44:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/07/test-driven-development-more-than-a-buzzword</id>
     <content type="html"><![CDATA[<p>Before starting programming classes, I had heard of test-driven development (TDD). I was told it was a good practice, similar to the way I was told to eat my green vegetables when I was younger. That&rsquo;s why up until today, I thought it was just another business <a href="http://unsuck-it.com/high-level-overview/" target="_blank">buzzword</a>.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2013-11-24T16:35:04-05:00</updated>
+  <updated>2014-03-04T20:41:09-08:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku]]></title>
     <link href="http://gregeng.github.io/blog/2013/11/21/hide-your-keys/"/>
-    <updated>2013-11-21T09:33:00-05:00</updated>
+    <updated>2013-11-21T09:33:00-08:00</updated>
     <id>http://gregeng.github.io/blog/2013/11/21/hide-your-keys</id>
     <content type="html"><![CDATA[<p>In that case, you have to do a little more than just hide them.</p>
 
@@ -98,7 +98,7 @@ Rails will be able to call these variables anywhere in the application by using 
   <entry>
     <title type="html"><![CDATA[I Like My Coffee Strong ... and My Params Stronger]]></title>
     <link href="http://gregeng.github.io/blog/2013/11/06/i-like-my-coffee-strong-and-my-params-stronger/"/>
-    <updated>2013-11-06T21:16:00-05:00</updated>
+    <updated>2013-11-06T21:16:00-08:00</updated>
     <id>http://gregeng.github.io/blog/2013/11/06/i-like-my-coffee-strong-and-my-params-stronger</id>
     <content type="html"><![CDATA[<p>Before understanding the need for strong params in Rails, let&rsquo;s take a look at the idea of mass assignment in Ruby.</p>
 
@@ -242,7 +242,7 @@ Your code will be more defensive and the data will be cleaner in the long run.</
   <entry>
     <title type="html"><![CDATA[Yield! In the Name of Blocks]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks/"/>
-    <updated>2013-10-23T08:38:00-04:00</updated>
+    <updated>2013-10-23T08:38:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/23/yield-in-the-name-of-blocks</id>
     <content type="html"><![CDATA[<p>Let&rsquo;s think it <a href="http://www.metrolyrics.com/stop-in-the-name-of-love-lyrics-the-supremes.html" target="_blank">over</a>&hellip;</p>
 
@@ -434,7 +434,7 @@ my_include?([1,2,3]) { |x| x == 4 }
   <entry>
     <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
     <link href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/"/>
-    <updated>2013-10-09T18:30:00-04:00</updated>
+    <updated>2013-10-09T18:30:00-07:00</updated>
     <id>http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
 " target="_blank">one</a>.</p>
