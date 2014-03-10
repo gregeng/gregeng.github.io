@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: heroku | Greg Eng]]></title>
-  <link href="http://gregeng.github.io/blog/categories/heroku/atom.xml" rel="self"/>
+  <title><![CDATA[Category: testing | Greg Eng]]></title>
+  <link href="http://gregeng.github.io/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
   <updated>2014-03-09T21:16:21-07:00</updated>
   <id>http://gregeng.github.io/</id>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Again]]></title>
+    <link href="http://gregeng.github.io/blog/2014/03/09/hello-again/"/>
+    <updated>2014-03-09T20:46:00-07:00</updated>
+    <id>http://gregeng.github.io/blog/2014/03/09/hello-again</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a few months since I&rsquo;ve updated my blog and I apologize! But a lot has happened since then. I graduated from the <a href="http://flatironschool.com/" target="_blank">Flatiron School</a>, moved from New York to San Francisco, and started a new job.</p>
+
+<p>For the past 2 months, I&rsquo;ve been working at <a href="http://xamarin.com/" target="_blank">Xamarin</a> as a Mobile Test Automation <a href="http://xamarin.com/jobs/ofc4Xfwc" target="_blank">Intern</a>.</p>
+
+<p>This means I get to author <em>automated</em> UI test scripts for various Android and iOS applications. These scripts then aid in ensuring the highest quality apps by testing them for functional bugs and UI mishaps across various devices in a burgeoning product called the Xamarin <a href="http://xamarin.com/test-cloud" target="_blank">Test Cloud</a>.</p>
+
+<p>In a previous role, I was <em>manually</em> QA testing mobile applications on both platforms, so in a way &hellip;things have come full circle. It&rsquo;s really exciting to apply new skills to a familiar craft.</p>
+
+<p>In the past 8 weeks I have learned so much and I anticipate learning even more. I want to seize the opportunity to write about it. I&rsquo;m looking forward to covering topics such as testing, QA, BDD, mobile, <a href="http://cukes.info/" target="_blank">cucumber</a>, and <a href="http://calaba.sh/" target="_blank">calabash</a>.</p>
+
+<p>I&rsquo;m excited to tell you all about it.<br><br>Until then!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[blog post ideas]]></title>
@@ -205,88 +224,6 @@ Abstract the entire login feature into a single step called <code>Given I am log
 -Git Resources
 -Environment Setup
 -That thing I showed bharat. .class ? .keys .firt .class .first etc</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku]]></title>
-    <link href="http://gregeng.github.io/blog/2013/11/21/hide-your-keys/"/>
-    <updated>2013-11-21T09:33:00-08:00</updated>
-    <id>http://gregeng.github.io/blog/2013/11/21/hide-your-keys</id>
-    <content type="html"><![CDATA[<p>In that case, you have to do a little more than just hide them.</p>
-
-<p>Typically, an API will require a key or authentication token before serving data downstream. It&rsquo;s logical to avoid committing any of these to a public repo on GitHub, so I often found myself falling into a pattern. I would make hidden files in the assets folder of my project, then <code>.gitignore</code> each one.</p>
-
-<p>It would result in a folder structure that might look like this:
-```bash
-/project</p>
-
-<pre><code>/lib
-  /assets
-    .api_key
-    .auth_token
-    .password
-</code></pre>
-
-<p>```</p>
-
-<p>Then in the class that controls all of the API calls, I would do something like this:</p>
-
-<p>```ruby
-Class API</p>
-
-<p>  API_KEY = open(&lsquo;lib/assets/.api_key&rsquo;).read()
-  AUTH_TOKEN = open(&lsquo;lib/assets/.auth_token&rsquo;).read
-  PASSWORD = open(&lsquo;lib/assets/.password&rsquo;).read</p>
-
-<p>  def some_method</p>
-
-<pre><code>:user_key =&gt; API_KEY
-:user_token =&gt; AUTH_TOKEN
-:user_password =&gt; PASSWORD
-</code></pre>
-
-<p>  end</p>
-
-<p>end
-```
-I set each relevant piece to a constant to be used in methods throughout the API interactions.</p>
-
-<p>This way feels a little clunky, but it works. As long as you remember to add each hidden file to the .gitignore, it keeps the credentials safe. But as a project grows and it accumulates more authorizations, it becomes a little difficult to manage.</p>
-
-<p>It wasn&rsquo;t until my group tried to deploy an app to Heroku that we discovered the better way. Heroku makes it simple to deploy a Rails app, but as a result it lacks a lot of the bells and whistles. As a result, it is impossible to log in to the server in a shell to upload each individual hidden file described above.</p>
-
-<p>In order to accomplish the same level of security and function, we can instead use Heroku config variables that will be read at runtime. Heroku has some great <a href="https://devcenter.heroku.com/articles/config-vars#local-setup" target="_blank">documentation</a> on this topic.</p>
-
-<p>It&rsquo;s very easy to set up from the local shell. Thanks to my teammate <a href="http://davidbella.github.io/" target="_blank">David Bella</a>, we were able to figure out what we needed to do immediately.</p>
-
-<p>Just navigate to the root of your project directory and run the <code>heroku config:set</code> command.</p>
-
-<p>For example:
-<code>bash
-heroku config:set API_KEY=abcefghijklmnopqrstuvwxyz
-heroku config:set AUTH_TOKEN=abc123doremi
-heroku config:set PASSWORD=p4ssw0rd
-</code>
-That&rsquo;s all there is to it! If you want to see your setup at any point, just type <code>heroku config</code> to see an output like this:</p>
-
-<p><code>bash
-API_KEY:                     abcefghijklmnopqrstuvwxyz
-AUTH_TOKEN:                  abc123doremi
-PASSWORD:                    p4ssw0rd
-</code>
-This is great for production, but how can we get the same level of organization and clarity for our development environment? My classmate <a href="http://scottluptowski.com/" target="_blank">Scott Luptowski</a> told us about the <a href="https://github.com/bkeepers/dotenv" target="_blank">dotenv</a> gem that assists with that exact problem.</p>
-
-<p>Start by including <code>gem 'dotenv-rails'</code> in your <code>Gemfile</code> in the appropriate groups. We only use it in <code>:test</code> and <code>:development</code>. Then, make a <code>.env</code> file at the root of your project directory. In it, include the assignments for each of the keys, tokens or passwords you want to call.</p>
-
-<p>For example:</p>
-
-<p><code>bash
-API_KEY=abcefghijklmnopqrstuvwxyz
-AUTH_TOKEN=abc123doremi
-PASSWORD=p4ssw0rd
-</code>
-Rails will be able to call these variables anywhere in the application by using this pattern: <code>ENV['API_KEY']</code>, <code>ENV['AUTH_TOKEN']</code>, <code>ENV['PASSWORD']</code>. The hard coded keys will stay out of your code and you will have one organized place to manage all the necessary information. Just remember to also add the .env file to your .gitignore. The app should now work seamlessly in both local development and production Heroku environments. A simple solution for an important problem!</p>
 ]]></content>
   </entry>
   

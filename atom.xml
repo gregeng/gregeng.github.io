@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2014-03-04T20:41:09-08:00</updated>
+  <updated>2014-03-09T21:16:17-07:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Again]]></title>
+    <link href="http://gregeng.github.io/blog/2014/03/09/hello-again/"/>
+    <updated>2014-03-09T20:46:00-07:00</updated>
+    <id>http://gregeng.github.io/blog/2014/03/09/hello-again</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s been a few months since I&rsquo;ve updated my blog and I apologize! But a lot has happened since then. I graduated from the <a href="http://flatironschool.com/" target="_blank">Flatiron School</a>, moved from New York to San Francisco, and started a new job.</p>
+
+<p>For the past 2 months, I&rsquo;ve been working at <a href="http://xamarin.com/" target="_blank">Xamarin</a> as a Mobile Test Automation <a href="http://xamarin.com/jobs/ofc4Xfwc" target="_blank">Intern</a>.</p>
+
+<p>This means I get to author <em>automated</em> UI test scripts for various Android and iOS applications. These scripts then aid in ensuring the highest quality apps by testing them for functional bugs and UI mishaps across various devices in a burgeoning product called the Xamarin <a href="http://xamarin.com/test-cloud" target="_blank">Test Cloud</a>.</p>
+
+<p>In a previous role, I was <em>manually</em> QA testing mobile applications on both platforms, so in a way &hellip;things have come full circle. It&rsquo;s really exciting to apply new skills to a familiar craft.</p>
+
+<p>In the past 8 weeks I have learned so much and I anticipate learning even more. I want to seize the opportunity to write about it. I&rsquo;m looking forward to covering topics such as testing, QA, BDD, mobile, <a href="http://cukes.info/" target="_blank">cucumber</a>, and <a href="http://calaba.sh/" target="_blank">calabash</a>.</p>
+
+<p>I&rsquo;m excited to tell you all about it.<br><br>Until then!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hide Your Keys, Hide Your Tokens ... Unless Deploying to Heroku]]></title>
