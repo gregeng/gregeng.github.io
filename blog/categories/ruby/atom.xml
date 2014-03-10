@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Greg Eng]]></title>
   <link href="http://gregeng.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2014-03-09T21:16:21-07:00</updated>
+  <updated>2014-03-09T23:45:34-07:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -29,201 +29,6 @@
 <p>In the past 8 weeks I have learned so much and I anticipate learning even more. I want to seize the opportunity to write about it. I&rsquo;m looking forward to covering topics such as testing, QA, BDD, mobile, <a href="http://cukes.info/" target="_blank">cucumber</a>, and <a href="http://calaba.sh/" target="_blank">calabash</a>.</p>
 
 <p>I&rsquo;m excited to tell you all about it.<br><br>Until then!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[blog post ideas]]></title>
-    <link href="http://gregeng.github.io/blog/2014/03/06/blog-post-ideas/"/>
-    <updated>2014-03-06T20:29:00-08:00</updated>
-    <id>http://gregeng.github.io/blog/2014/03/06/blog-post-ideas</id>
-    <content type="html"><![CDATA[<h2>some of this is for you but most of it is for me.. alot of this is to help me remember what i learned and serve as a reference to remind myself things later</h2>
-
-<h3>1. non-technical explanation post</h3>
-
-<p>categories: QA, calabash, cucumber, ruby, mobile, android, ios, non-technical, testing,</p>
-
-<p>Hello Again</p>
-
-<p>Hello Again &ndash; Calabash</p>
-
-<p>It&rsquo;s been a few months since I&rsquo;ve updated my blog and I apologize! A lot has happened since then. I graduated from the Flatiron School, moved from New York to San Francisco, and started a new job.</p>
-
-<p>For the past 2 months, I&rsquo;ve been interning at Xamarin as a Mobile Test Automation Intern.</p>
-
-<p>This means I get to I author <strong>automated</strong> UI test scripts for various Android and iOS applications. These scripts then aid in ensuring the highest quality apps by testing them for functional bugs and UI deficiencies across various devices in a burgeoning product called the Xamarin Test Cloud.</p>
-
-<p>In a previous role, I was <strong>manually</strong> QA testing mobile applications on both platforms, so in a way things have come full circle. It&rsquo;s really exciting to apply new skills to a familiar craft.</p>
-
-<p>In the past 8 weeks I have learned so much and I anticipate learning even more. I want to seize the opportunity to write about it. I&rsquo;m looking forward to covering topics such as testing, QA, mobile, cucumber, and calabash.</p>
-
-<p>I&rsquo;m excited to tell you all about it. Until then!</p>
-
-<h3>2. What is Calabash?</h3>
-
-<p>Why don&rsquo;t I let the co-creator of Calabash describe it to you? [Insert Video of Karl Explaining Here]</p>
-
-<p>If you are in a hurry and don&rsquo;t have time to watch the video, here&rsquo;s a quick summary for you:</p>
-
-<p>Android
--server runs along side the app
--resigned
--never rooted
--passes same standards as the Google Playstore</p>
-
-<p>iOS
--server built into the app
--resigned
--never jailbroken
--passes same standards as App Store</p>
-
-<p>explanation of how calabash works, with the server running in parallel versus baked into app ###
--calabash is the automation engine. cucumber is the vehicle. at the end of the day calabash converts the queries into something that literally changes to touch coordinates of where it has determined an element to exist.</p>
-
-<h3>3. how to start writing android ui tests for any app</h3>
-
-<ul>
-<li>setting up the environment
--why am i choosing android? because of the way calabash works. the .ipa has to have the calabash framework built in when compiled. with android, you just have to resign it and you&rsquo;re good to go. it runs in parallel to the app.</li>
-</ul>
-
-
-<p><a href="https://docs.google.com/a/xamarin.com/document/d/1bAwXH9sRt7pSii1WTlLMQu5gv50gw0IZWO-zYiVhKvs/edit#">https://docs.google.com/a/xamarin.com/document/d/1bAwXH9sRt7pSii1WTlLMQu5gv50gw0IZWO-zYiVhKvs/edit#</a></p>
-
-<p>test on a local device so much better.</p>
-
-<p><a href="http://howto.cnet.com/8301-11310_39-57610905-285/how-to-record-your-screen-on-android-4.4-kitkat/">http://howto.cnet.com/8301-11310_39-57610905-285/how-to-record-your-screen-on-android-4.4-kitkat/</a></p>
-
-<h3>4. the basics</h3>
-
-<ul>
-<li>query &ldquo;*&rdquo;</li>
-<li>find an element on the page</li>
-<li>query the index of that item</li>
-<li>touch that item</li>
-<li>it all boils down to querying objects. and then touching the objects.</li>
-<li>its as easy as switching the query method to the touch method</li>
-</ul>
-
-
-<h3>5. strong and weak bindings.</h3>
-
-<ul>
-<li>query *</li>
-<li>query index number</li>
-<li>query text contains &mdash;&ndash; localized</li>
-<li>query content description</li>
-<li>query id &mdash;&ndash; developer buy in</li>
-</ul>
-
-
-<h3>6. helpful performAction arguments in calabash android</h3>
-
-<p>scroll_down
-scroll_up
-send_key_enter
-rotate devicie
-swipe
-touch and hold
-drag coordinates</p>
-
-<h3>7. granular steps in calabash android and cucumber. takes a screenshot at each step .. helpful for identifying ui bugs.</h3>
-
-<ul>
-<li>look up to make sure this is a calabash thing not a cucumber thing</li>
-<li>A A A , Arange, Act, Assert. Given When Then</li>
-</ul>
-
-
-<h3>8. the page object patterm/model</h3>
-
-<ul>
-<li>you have to use an instance variable in the step definition to increase its scope since it is given within the step definition. In a future post, I will outline how this pattern fits in in terms of moving up the abstract ladder with calabash</li>
-</ul>
-
-
-<h2>9. a tale of 3 logins</h2>
-
-<ul>
-<li>good, better, even better (I dont like to throw the word best around lightly.)</li>
-</ul>
-
-
-<h2>10. .b.pdd</h2>
-
-<p>-binding.pry driven development &ndash; the mobile automation workflow
-Step 1
-Launch the app from a local device or simulator
-use <code>rake console</code> or calabash-android path_to_apk
-within the irb console <code>reinstall_apps</code>
-within the irb console <code>start_test_server_in_background</code>
-navigate through various screens in the app and query different objects to get a feel for what you can work with
-begin thinking of the flow for a use case or feature
-think in terms of possible page objects you could construct and their methods
-Pages
-LoginPage, TourPage, HomePage
-Methods
-take_tour, enter_credentials, login
-Most of the time the first feature you build will be a valid login</p>
-
-<p>Step 2
-Create a new feature file under app_name/features
-Use convention ##_feature_name.feature
-Using gherkin, write out in plain english the feature as you expect it to run</p>
-
-<p>Step 3
-Run the feature using <code>rake run</code> from the command line, which is a shortcut for
-calabash-android run <code>path_to_apk</code>
-Calabash will output to the console pending step definitions</p>
-
-<p>Step 4
-Create a new step_definition file under app_name/features/step_definitions
-use convention feature_name_steps.rb
-Copy and paste the pending step definitions from the command line to this file</p>
-
-<p>Step 5
-Based on what you discovered in the first step, begin to fill in your step definitions with the page objects and methods you will probably use.
-@current_page is the instance variable you assign after instantiating a page object to expose the methods available at the time.
-<code>page</code> is a helper method that instantiates each PageObject and .await ensures the code waits for the screen you intended before calling methods.</p>
-
-<p>Step 6
-Page objects are conventionally written in camel case, while their filename counterparts are in snake case
-Create pages for everything you outlined in the step definitions under android/pages
-convention page_name_page.rb
-Under each page class, define a distinguishing trait as a method. The method takes in a query string. The trait should be something unique to that page.
-Create methods for all other interactions you want to gain from the pages. It will be logical based on the way you wrote the step definitions.</p>
-
-<p>Step 7
-Run the tests using <code>rake run</code>
-After confirming it work locally, upload to XTC</p>
-
-<p>Pro-Tips
-Use the pry gem to insert breakpoints into your app. When you run the scripts it will load all your page objects and methods allowing you to interact with the world your test-suite is defining
-Abstract the entire login feature into a single step called <code>Given I am logged in</code> and put it under a step definition file called common_steps.rb</p>
-
-<h3>11. creating a custom scroll in calabash-android</h3>
-
-<ul>
-<li>use frame layout. this always shows the size of the screen.</li>
-<li>get the xy coordinates
--That thing I showed bharat. .class ? .keys .firt .class .first etc</li>
-<li>helpful ruby functions.
--multiply by each to determine scroll speed.</li>
-</ul>
-
-
-<h3>12. random. type writer print</h3>
-
-<p>-shout out to my friend david bella. would like to incorporate this into ui tests in calabash-android for showman purposes.</p>
-
-<h3>13. random helpful adb tools, view hierarchy</h3>
-
-<h1>Important Docs to Adapt to Blog Posts</h1>
-
-<p>-Technical Training
--Git Resources
--Environment Setup
--That thing I showed bharat. .class ? .keys .firt .class .first etc</p>
 ]]></content>
   </entry>
   
@@ -642,6 +447,127 @@ my_include?([1,2,3]) { |x| x == 4 }
 <p>These examples are simple and isolated, but <code>yield</code> truly provides myriad possibilities when building sophisticated programs. To prove it, check out this <a href="http://rubylearning.com/blog/2010/11/30/how-do-i-build-dsls-with-yield-and-instance_eval/" target="_blank">blog post</a> by Michael Bleigh where he described constructing eloquent looking code to design a DSL (Domain Specific Language) with the help of <code>yield</code>.</p>
 
 <p>Have you ever used <code>yield</code> to do something clever or noteworthy? Sound off in the comments!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Abstraction and 3 Helpful Ruby Iterators]]></title>
+    <link href="http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators/"/>
+    <updated>2013-10-09T18:30:00-07:00</updated>
+    <id>http://gregeng.github.io/blog/2013/10/09/abstraction-and-3-iterators</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve never been a big fan of modern art. Some pieces are so abstract that I don&rsquo;t really get the point &ndash; and I know I&rsquo;m not the only <a href="http://www.buzzfeed.com/jenlewis/quiz-can-you-tell-the-difference-between-modern-art-and-art
+" target="_blank">one</a>.</p>
+
+<p>But in programming, abstraction is different. It makes for more eloquent and productive code by concealing complexity. Let&rsquo;s witness abstraction by stepping through 3 related methods:
+<code>each</code>,  <code>collect</code>  &amp;  <code>select</code>.</p>
+
+<p>The <code>each</code> method:</p>
+
+<p>```ruby
+numbers_array = [1,2,3,4,5,6,7,8,9,10]</p>
+
+<pre><code>numbers_array.each do |x|
+  print "#{x * 2} "
+end
+</code></pre>
+
+<h1>output: 2 4 6 8 10 12 14 16 18 20</h1>
+
+<p>numbers_array = [1,2,3,4,5,6,7,8,9,10]</p>
+
+<p>```</p>
+
+<p>The <code>each</code> method iterates through individual elements in the array and returns the original array untouched.</p>
+
+<p>When I first learned the <code>each</code> method, I used it almost exclusively when working with arrays to make the computer do alot of the leg work for me.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Abraham_Maslow" target="_blank">Abraham Maslow</a> explains this consequence:</p>
+
+<blockquote><p>&hellip;if all you have is a hammer, everything looks like a nail.</p></blockquote>
+
+<p>However, since the <code>each</code> method does not change the original array, I started writing alot of code that looks like this:</p>
+
+<p>```ruby
+numbers_array = [1,2,3,4,5,6,7,8,9,10]
+odds_and_ends = []</p>
+
+<pre><code>numbers_array.each do |x|
+
+  if x % 2 != 0 
+    odds_and_ends &lt;&lt; true
+  else x % 2 == 0 
+    odds_and_ends &lt;&lt; false
+  end
+
+end
+</code></pre>
+
+<p>odds_and_ends</p>
+
+<p>=> [true, false, true, false, true, false, true, false, true, false]
+<code>``
+Here, I am creating a new empty array, just so I can shovel items into it with the</code>each` method. If this feels bulky to you, that&rsquo;s because it is! Programmers might say this pattern reeks of <em>code smell</em>.</p>
+
+<p>The ruby <code>collect</code> method is a better tool for the job, and it is just an abstraction of the <code>each</code> method.</p>
+
+<p>Here is <code>collect</code> using the example from above:</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].collect do |x|
+  if x % 2 != 0</p>
+
+<pre><code>true
+</code></pre>
+
+<p>  else x % 2 == 0</p>
+
+<pre><code>false
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>=> [true, false, true, false, true, false, true, false, true, false]
+<code>``
+Note that the</code>collect` method returns a <strong>new</strong> array which I have set equal to &ldquo;odds_and_ends.&rdquo;</p>
+
+<p>But what if we only wanted to return a <em>part</em> of the array if it matches certain criteria? In that case, <code>collect</code> no longer the best option.</p>
+
+<p>As you might have guessed, the ruby <code>select</code> method is an abstraction of the <code>collect</code> method. It also returns a new array, with an implicit <em>if</em> clause built in.</p>
+
+<p>Continuing with our example&hellip;</p>
+
+<p>If we were to use <code>collect</code>, it would return a messy array including nil values&hellip;</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].collect do |x|
+  if x % 2 != 0</p>
+
+<pre><code>x
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>=> [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]</p>
+
+<p>```</p>
+
+<p>&hellip;while <code>select</code> gets the job done more cleanly. It uses the implicit if to return only values matching the specified logic:</p>
+
+<p>```ruby
+odds_and_ends = [1,2,3,4,5,6,7,8,9,10].select do |x|
+  x % 2 != 0
+end</p>
+
+<p>=> [1, 3, 5, 7, 9]
+```</p>
+
+<p>So remember, abstraction is your friend!</p>
+
+<p>To recap: <code>select</code> is an abstraction of <code>collect</code> which is just an abstraction of <code>each</code>. Use them to <a href="http://images.wikia.com/richmoreacademy/images/0/07/Pine-tree-car-air-freshener.gif" target="_blank">freshen</a> up any and all code smell. I&rsquo;m still working to make sure I choose the right methods.</p>
+
+<p>By the way, if you were wondering where the <code>each</code> method comes from, you would be right to assume it is just another abstraction of simpler ruby properties! In a future blog post, I will go over how all of these iteration methods break down using the <code>yield</code> statement.</p>
 ]]></content>
   </entry>
   
