@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2014-03-09T23:45:34-07:00</updated>
+  <updated>2014-03-10T20:04:16-07:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Environment Setup for Calabash Testing]]></title>
+    <link href="http://gregeng.github.io/blog/2014/03/10/environment-setup-for-calabash-testing/"/>
+    <updated>2014-03-10T21:25:00-07:00</updated>
+    <id>http://gregeng.github.io/blog/2014/03/10/environment-setup-for-calabash-testing</id>
+    <content type="html"><![CDATA[<p>In order to begin writing automated test suites with <a href="http://calaba.sh/" target="_blank">calabash</a>, you will need to set up your dev environment.</p>
+
+<p>This is an exciting and necessary step in achieving a productive scripting work flow. So I thought I would write this guide to lower the barrier to entry and help you get up and running sooner.</p>
+
+<p>Both <code>calabash-ios</code> and <code>calabash-android</code> were originially written as Ruby libraries. Therefore, I will be showing you how to set it up using Ruby and Mac OSX.</p>
+
+<p>Let&rsquo;s get started:<br></p>
+
+<ol>
+<li>Install <a href="http://brew.sh/" target="_blank">Homebrew</a> (The missing package manager for OS X)<br><br>
+
+<ul>
+<li>From the shell run:<br><br>
+
+<ul>
+<li><code>ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</code><br><br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Install <a href="https://rvm.io/" target="_blank">RVM</a> (Ruby Version Manager)<br><br>
+
+<ul>
+<li>Currently, I am using the following version: <code>ruby 2.0.0p247</code><br><br></li>
+<li>In order to replicate my environment, run this from the shell:<br><br>
+
+<ul>
+<li><code>rvm install 2.0.0-p247</code></li>
+<li><code>rvm --default use 2.0.0-p247</code><br><br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Install <a href="https://developer.apple.com/xcode/" target="_blank">Xcode</a>, the Command Line Tools, and iOS Simulators<br><br>
+
+<ul>
+<li>Open up the Mac App Store and search for Xcode.<br><br></li>
+<li>Install Xcode from there and login using your Apple Developer login/password.<br><br></li>
+<li>Once the application is installed, open it up and download the Command Line Tools and iOS Simulators.<br><br>
+
+<ul>
+<li>They should be located within Xcode Preferences &ndash;> Downloads<br><br>
+
+<ul>
+<li>If for some reason they are not available there, search for them <a href="https://daw.apple.com/cgi-bin/WebObjects/DSAuthWeb.woa/wa/login?&appIdKey=891bd3417a7776362562d2197f89480a8547b108fd934911bcbea0110d07f757&path=%2F%2Fdownloads%2Findex.action#" target="_blank">here</a>.<br><br></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Install Required <a href="http://rubygems.org/" target="_blank">Gems</a> (The Ruby Package Management System)<br><br>
+
+<ul>
+<li>From the shell run:<br><br>
+
+<ul>
+<li><code>gem install 'bundler'</code></li>
+<li><code>gem install 'calabash-cucumber'</code></li>
+<li><code>gem install 'calabash-android'</code></li>
+<li><code>gem install 'pry'</code><br><br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Install the <a href="http://developer.android.com/tools/help/adb.html" target="_blank">Android Debug Bridge</a> (adb)<br></p>
+
+<ul>
+<li>Download the Android <a href="http://developer.android.com/sdk/index.html" target="_blank">SDK</a><br><br></li>
+<li>Unzip the file and rename the folder to &ldquo; <em>android-sdk</em> &rdquo;<br><br></li>
+<li>Nest the folder in any directory you like. I suggest <code>/Users/YOURUSERNAME/Development</code><br><br></li>
+<li>Add the folder location to your <code>$PATH</code><br><br>
+
+<ul>
+<li>From the shell: <code>cd</code> then <code>open -a TextEdit .bash_profile</code><br><br></li>
+<li>Add this: <code>export PATH="/Users/YOURUSERNAME/Development/android-sdk/platform-tools/":$PATH</code><br><br></li>
+</ul>
+</li>
+<li>Open a new shell window and enter the command <code>adb</code><br><br></li>
+<li>If you see a list of adb help commands, you&rsquo;re all set!<br><br></li>
+</ul>
+</li>
+<li><p>Generate an Android <a href="https://github.com/calabash/calabash-android/wiki/Running-Calabash-Android" target="_blank">debug.keystore</a><br><br></p>
+
+<ul>
+<li>If debug.keystore is missing, it be recreated in <code>ANDROID_HOME</code> with the following command:<br><br>
+<code>
+keytool -genkey -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+</code><br><br></li>
+</ul>
+</li>
+<li>Download <a href="https://cloud.genymotion.com/page/launchpad/download/" target="_blank">Genymotion</a><br><br>
+
+<ul>
+<li>This is an alternative Android emulator.<br><br></li>
+</ul>
+</li>
+<li>Download Oracle <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">VirtualBox</a><br><br>
+
+<ul>
+<li>This works in conjunction with Genymotion to simulate Android devices.<br><br></li>
+</ul>
+</li>
+<li>Enable the Google Playstore on <strong>all</strong> your virtual device simulators<br><br>
+
+<ul>
+<li>If you are not signed in with an account on the Google Playstore on each device, you will not be able to run calabash automated scripts in the simulator.<br><br></li>
+<li>Here is an excellent <a href="http://stackoverflow.com/questions/17831990/how-do-you-install-google-frameworks-play-accounts-etc-on-a-genymotion-virtu" target="_blank">guide</a> from Stack Overflow detailing how to do this.<br><br></li>
+<li>I consistently use the Galaxy Nexus 4.3 API 18 when authoring scripts locally. Of course, feel free to choose any device or version level you want.<br><br></li>
+</ul>
+</li>
+</ol>
+
+
+<p>&hellip;and that&rsquo;s it!<br>
+Assuming everything went well, you are now ready to begin writing calabash powered, automated test suites. Enjoy!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hello Again]]></title>
