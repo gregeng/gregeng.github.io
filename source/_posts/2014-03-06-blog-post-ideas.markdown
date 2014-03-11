@@ -60,6 +60,16 @@ explanation of how calabash works, with the server running in parallel versus ba
 - setting up the environment
 -why am i choosing android? because of the way calabash works. the .ipa has to have the calabash framework built in when compiled. with android, you just have to resign it and you're good to go. it runs in parallel to the app.
 
+------- for another blog post
+    - download an app from the google play store
+    - make a folder named calabash-tests ... mk a folder for the app name
+    - adb shell. cd data/app/ ... this is where applications live
+    - adb pull .. make an original app folder
+    - calabash-android resign
+    - calabash-android console
+    - reinstall_apps
+    - start_test_server
+
 https://docs.google.com/a/xamarin.com/document/d/1bAwXH9sRt7pSii1WTlLMQu5gv50gw0IZWO-zYiVhKvs/edit#
 
 test on a local device so much better.
