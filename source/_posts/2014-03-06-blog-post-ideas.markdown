@@ -128,6 +128,8 @@ Methods
 take_tour, enter_credentials, login
 Most of the time the first feature you build will be a valid login
 
+now it doesnt quite matter what the enter credentials method entails. i know that i wrote it at some point and that it works. the details are only a concern of past greg. all future greg needs to know is that the login page has a method called enter credentials. you can pass a login and a password and be on your merry valid authorized user way.
+
 Step 2
 Create a new feature file under app_name/features
 Use convention ##_feature_name.feature
