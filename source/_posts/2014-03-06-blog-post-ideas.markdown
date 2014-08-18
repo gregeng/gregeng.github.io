@@ -53,6 +53,12 @@ iOS
 -never jailbroken
 -passes same standards as App Store
 
+analogy. two hurdlers. ios is like a hurdler with headphones in. the headphones are telling the hurdler ... a hurdle is coming, jump the hurdle. land the jump.
+
+android is like a hurdler and a buddy running next to him/her. the buddy is coaching the hurdlers saying. a hurdle is coming, jump the hurdle. land the jump.
+
+in each of these cases the instructions are coming form the calabash automation library. it is literally the server issuing the commands to the client.
+
 explanation of how calabash works, with the server running in parallel versus baked into app ###
 -calabash is the automation engine. cucumber is the vehicle. at the end of the day calabash converts the queries into something that literally changes to touch coordinates of where it has determined an element to exist.
 
