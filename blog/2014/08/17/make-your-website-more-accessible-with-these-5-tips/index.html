@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Make Your Website More Accessible With These 5 Tips - Greg Eng</title>
+  <meta name="author" content="Greg Eng">
+
+   
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://gregeng.github.io/blog/2014/08/17/make-your-website-more-accessible-with-these-5-tips">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Greg Eng" type="application/atom+xml">
+  <script src="/js/jquery.js"></script>
+  <script src="/js/bootstrap-collapse.js"></script>
+  <script src="/js/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/js/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-45994045-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <div class="navbar navbar-inverse navbar-static-top">
+  	<div class="navbar-inner">
+  	  <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="fui-menu-24"></span>
+        </a>
+  	  	<div class="nav-collapse collapse navbar-responsive-collapse" style="height:0;">
+  	      <ul class="nav">
+    
+        <li ><a href="/index.html">Home</a></li>
+    
+        <li ><a href="/blog/archives/index.html">Archives</a></li>
+    
+</ul>
+
+<ul class="nav pull-right">
+    
+    <li><a href="http://github.com/gregeng" title="Github Profile" target="0"><i class="icon-github-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://linkedin.com/in/gregeng" title="Linkedin Profile" target="0"><i class="icon-linkedin-sign social-navbar"></i></a></li>
+    
+    
+    <li><a href="http://twitter.com/gregeng" title="Twitter Profile" target="0"><i class="icon-twitter-sign social-navbar"></i></a></li>
+    
+    
+    
+    
+    <li><a href="http://instagram.com/gregeng" title="Instagram Profile" target="0"><i class="icon-camera-retro social-navbar"></i></a></li>
+    
+    
+    <li><a href="mailto:greg.eng@gmail.com" title="Email" target="0"><i class="icon-envelope-alt social-navbar"></i></a></li>
+    
+</ul>
+
+  	    </div>
+  	  </div>
+  	</div>
+  </div>
+  <div class="container" id="main">
+    <div class="span12">
+      <div class="row-fluid">
+        <div id="content">
+          <div>
+<article class="hentry" role="article">
+  
+
+  <header>
+  <div class="jumbotron">
+    Make Your Website More Accessible With These 5 Tips
+	<h5>
+
+
+
+
+
+
+
+
+  
+
+
+<i class="icon-calendar-empty"></i> <time datetime="2014-08-17T19:59:00-07:00" pubdate data-updated="true">Aug 17<span>th</span>, 2014</time></h5>
+  </div>
+</header>
+  <div class="row-fluid">
+    <div class="span12">
+      <p>Optimizing a website to adhere to web accessibility standards allows for a wider audience and user base. An accessible website should allow users who use screen readers and/or depend fully on the keyboard to use every piece of functionality on the website, in a logical manner.</p>
+
+<p>In a recent project for work, I was tasked with creating a web accessible media display that passed AA standards. The following information and tips are things I wish I had a few weeks ago in order to help with the process. I hope it helps someone else in the future!</p>
+
+<h1>Essentials:</h1>
+
+<ul>
+<li>Make sure everything is accessible by tab / shift+tab.</li>
+<li>Err on the side of semantic html rather than forcing the use of the global tab index attribute. (In some cases, it will be unavoidable &hellip; like in certain description overlays or media lightboxes)</li>
+<li>Provide a <code>title</code> to all <code>&lt;a&gt;</code> tags so that screen readers can read it.</li>
+<li>Provide <code>alt</code> text to all images.</li>
+<li>Use text as often as possible so that screen readers will successfully be able to provide voice over to the content. If it is not possible to use text due to specific styling concerns, make sure to be diligent about the alternate text that is associated with the image.</li>
+<li>Choose colors with a high amount of contrast to make text easily readable.</li>
+</ul>
+
+
+<h1>5 Pro-Tips:</h1>
+
+<ol>
+1. Set up an event listener to add a class to the body of using-keyboard.
+
+<p>This allows you to implement different :focus pseudo-class selectors when using/not using the keyboard.</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;using-keyboard&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">mouseup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;using-keyboard&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+2. Write :focus and :active styles.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">*</span> <span class="nt">body</span><span class="nc">.using-keyboard</span><span class="nd">:focus</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="m">2px</span> <span class="k">dashed</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span><span class="nd">:focus</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="m">2px</span> <span class="k">dashed</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span><span class="nd">:active</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+3. Use this function to make things behind an overlay inaccessible via keyboard.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.the-last-element-you-want-to-tab&#39;</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.the-first-element-you-want-to-tab&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Thank you to <a href="http://stackoverflow.com/questions/11351983/how-to-limit-tab-indexes-to-just-an-overlay-and-its-elements
+" target="_blank">this post</a> on stackoverflow for helping me solve this issue.</p>
+
+
+4. Force a specific tabindex keyboard interaction flow
+<p>If tab indexes aren’t working properly&#8230; which can be highly likely in Internet Explorer, you can force the route you want the user flow to go with this function. Note you will need to be very specific about the global tab index property.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">tabindex</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;*:focus&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;tabindex&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lastTabindex</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// make this the highest tab index number you have on the page</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">===</span> <span class="mi">9</span> <span class="o">&amp;&amp;</span> <span class="nx">tabindex</span> <span class="o">!==</span> <span class="nx">lastTabindex</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">tabindex</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[tabindex=&#39;</span> <span class="o">+</span> <span class="nx">tabindex</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">tabindex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[tabindex=1]&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+5. Reset focus to triggering elements.
+This is applicable after visiting another page, overlay, lightbox, etc.<br>
+<p>An easy way to do this is to assign an id to the tag that triggers the page, overlay, or lightbox. After closing that region, reset focus to the triggering element with jQuery by focusing on the asset matching the id.</p>
+
+</ol>
+
+
+<h3>Additional Resources:</h3>
+
+<ul>
+<li><a href="http://www.w3.org/WAI/intro/accessibility.php">http://www.w3.org/WAI/intro/accessibility.php</a></li>
+<li><a href="http://www.w3.org/WAI/WCAG20/quickref/Overview.php">http://www.w3.org/WAI/WCAG20/quickref/Overview.php</a></li>
+<li><a href="http://www.w3.org/TR/WCAG20/">http://www.w3.org/TR/WCAG20/</a></li>
+</ul>
+
+
+<p>And if you were curious to interact with the final product, web accessible and all &hellip; you can check it out at:</p>
+
+<p><a href="http://firstdayofschool.target.com" target="_blank">firstdayofschool.target.com</a></p>
+
+    </div>
+  </div>
+
+
+
+  <footer>
+    <hr>
+    
+    <div class="row-fluid">
+      
+      <div class="span6">
+        <p class="meta">
+        
+        
+
+
+
+  <a href="/blog/categories/accessibility/"><span class="badge">accessibility</span></a>
+
+  <a href="/blog/categories/css3/"><span class="badge">css3</span></a>
+
+  <a href="/blog/categories/html5/"><span class="badge">html5</span></a>
+
+  <a href="/blog/categories/javascript/"><span class="badge">javascript</span></a>
+
+  <a href="/blog/categories/jquery/"><span class="badge">jquery</span></a>
+
+
+
+
+        </p>
+      </div>
+      
+      <div class="span6 social-sharing">
+        <div class="sharing">
+  <div class="addthis_toolbox addthis_default_style ">
+  
+  <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+  
+  
+  <a class="addthis_button_tweet"></a>
+  
+  
+  <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+      </div>
+      
+      
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12">
+        <p class="meta">
+          
+            <a class="basic-alignment left" href="/blog/2014/03/10/environment-setup-for-calabash-testing/" title="Previous Post: Environment Setup for Calabash Testing">&laquo; Environment Setup for Calabash Testing</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+
+
+        </div>
+      </div>
+      <div class="row-fluid">
+        <footer class="footer-page" role="contentinfo">
+          <p>
+  Copyright &copy; 2014 - Greg Eng -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> - Theme by <a href="http://alexgaribay.com">Alex Garibay</a>
+</p>
+
+
+        </footer>
+      </div>
+    </div>
+  </div>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'gregeng';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://gregeng.github.io/blog/2014/08/17/make-your-website-more-accessible-with-these-5-tips/';
+        var disqus_url = 'http://gregeng.github.io/blog/2014/08/17/make-your-website-more-accessible-with-these-5-tips/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

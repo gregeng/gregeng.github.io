@@ -4,7 +4,7 @@
   <title><![CDATA[Greg Eng]]></title>
   <link href="http://gregeng.github.io/atom.xml" rel="self"/>
   <link href="http://gregeng.github.io/"/>
-  <updated>2014-03-10T20:04:16-07:00</updated>
+  <updated>2014-08-17T20:21:54-07:00</updated>
   <id>http://gregeng.github.io/</id>
   <author>
     <name><![CDATA[Greg Eng]]></name>
@@ -12,6 +12,139 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Make Your Website More Accessible With These 5 Tips]]></title>
+    <link href="http://gregeng.github.io/blog/2014/08/17/make-your-website-more-accessible-with-these-5-tips/"/>
+    <updated>2014-08-17T19:59:00-07:00</updated>
+    <id>http://gregeng.github.io/blog/2014/08/17/make-your-website-more-accessible-with-these-5-tips</id>
+    <content type="html"><![CDATA[<p>Optimizing a website to adhere to web accessibility standards allows for a wider audience and user base. An accessible website should allow users who use screen readers and/or depend fully on the keyboard to use every piece of functionality on the website, in a logical manner.</p>
+
+<p>In a recent project for work, I was tasked with creating a web accessible media display that passed AA standards. The following information and tips are things I wish I had a few weeks ago in order to help with the process. I hope it helps someone else in the future!</p>
+
+<h1>Essentials:</h1>
+
+<ul>
+<li>Make sure everything is accessible by tab / shift+tab.</li>
+<li>Err on the side of semantic html rather than forcing the use of the global tab index attribute. (In some cases, it will be unavoidable &hellip; like in certain description overlays or media lightboxes)</li>
+<li>Provide a <code>title</code> to all <code>&lt;a&gt;</code> tags so that screen readers can read it.</li>
+<li>Provide <code>alt</code> text to all images.</li>
+<li>Use text as often as possible so that screen readers will successfully be able to provide voice over to the content. If it is not possible to use text due to specific styling concerns, make sure to be diligent about the alternate text that is associated with the image.</li>
+<li>Choose colors with a high amount of contrast to make text easily readable.</li>
+</ul>
+
+
+<h1>5 Pro-Tips:</h1>
+
+<ol>
+1. Set up an event listener to add a class to the body of using-keyboard.
+
+<p>This allows you to implement different :focus pseudo-class selectors when using/not using the keyboard.</p>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keydown</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;using-keyboard&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">mouseup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;using-keyboard&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+2. Write :focus and :active styles.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">*</span> <span class="nt">body</span><span class="nc">.using-keyboard</span><span class="nd">:focus</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="m">2px</span> <span class="k">dashed</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span><span class="nd">:focus</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="m">2px</span> <span class="k">dashed</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span><span class="nd">:active</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">outline</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+3. Use this function to make things behind an overlay inaccessible via keyboard.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.the-last-element-you-want-to-tab&#39;</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.the-first-element-you-want-to-tab&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Thank you to <a href="http://stackoverflow.com/questions/11351983/how-to-limit-tab-indexes-to-just-an-overlay-and-its-elements
+" target="_blank">this post</a> on stackoverflow for helping me solve this issue.</p>
+
+
+4. Force a specific tabindex keyboard interaction flow
+<p>If tab indexes aren’t working properly&#8230; which can be highly likely in Internet Explorer, you can force the route you want the user flow to go with this function. Note you will need to be very specific about the global tab index property.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">tabindex</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;*:focus&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;tabindex&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lastTabindex</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// make this the highest tab index number you have on the page</span>
+</span><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">keyup</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">===</span> <span class="mi">9</span> <span class="o">&amp;&amp;</span> <span class="nx">tabindex</span> <span class="o">!==</span> <span class="nx">lastTabindex</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">tabindex</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[tabindex=&#39;</span> <span class="o">+</span> <span class="nx">tabindex</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">tabindex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;[tabindex=1]&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+5. Reset focus to triggering elements.
+This is applicable after visiting another page, overlay, lightbox, etc.<br>
+<p>An easy way to do this is to assign an id to the tag that triggers the page, overlay, or lightbox. After closing that region, reset focus to the triggering element with jQuery by focusing on the asset matching the id.</p>
+
+</ol>
+
+
+<h3>Additional Resources:</h3>
+
+<ul>
+<li><a href="http://www.w3.org/WAI/intro/accessibility.php">http://www.w3.org/WAI/intro/accessibility.php</a></li>
+<li><a href="http://www.w3.org/WAI/WCAG20/quickref/Overview.php">http://www.w3.org/WAI/WCAG20/quickref/Overview.php</a></li>
+<li><a href="http://www.w3.org/TR/WCAG20/">http://www.w3.org/TR/WCAG20/</a></li>
+</ul>
+
+
+<p>And if you were curious to interact with the final product, web accessible and all &hellip; you can check it out at:</p>
+
+<p><a href="http://firstdayofschool.target.com" target="_blank">firstdayofschool.target.com</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Environment Setup for Calabash Testing]]></title>
